@@ -1,0 +1,69 @@
+.header {
+  width: 100%;
+  max-width: 1400px;
+  background-color: skyblue;
+  padding: 30px;
+  border-radius: 0px;
+  text-align: center;
+}
+
+body {
+  flex-direction: column;
+  align-items: center; 
+  margin: 0;
+  padding: 0;
+  background-image: url('skybox.png');
+  background-size: cover; 
+  background-position: center center; 
+  display: flex;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 30px;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;  
+  max-width: 1400px;
+  text-align: center;
+  padding-top: 20px;
+  flex-grow: 1;
+}
+
+.tabs {
+  width: 100%;
+  max-width: 1400px;
+  background-color: #666699; 
+  padding: 0px; 
+  text-align: center;
+}
+
+.tabbut {
+  background-color: #666699;
+  border: none;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 1px;
+  cursor: pointer;
+  color: white;
+}
+
+.tabbut:hover {
+  background-color: #9999ff;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin: 1;
+}
+
+p {
+  font-size: 16px;
+}
