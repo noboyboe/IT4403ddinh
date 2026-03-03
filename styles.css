@@ -96,6 +96,10 @@ body {
   background-color: #9999ff;
 }
 
+.copyright {
+  padding-top: 20px;
+}
+
 h1 {
   text-align: center;
   color: black;
