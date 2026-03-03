@@ -12,7 +12,6 @@ body {
   align-items: center; 
   margin: 0;
   padding: 0;
-  background-image: url('skybox.png');
   background-size: cover; 
   background-position: center center; 
   display: flex;
@@ -32,6 +31,16 @@ body {
   text-align: center;
   padding-top: 20px;
   flex-grow: 1;
+}
+
+.footer {
+  margin-top: auto;
+  border: 1px solid black;
+  text-align: center;
+  background-color: #F0FFFF;
+  padding: 10px;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .tabs {
