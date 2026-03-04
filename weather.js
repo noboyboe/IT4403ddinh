@@ -1,6 +1,5 @@
 var jsonObject = {
 
-{
   "coord": {
     "lon": -0.13,
     "lat": 51.51
