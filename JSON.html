@@ -18,13 +18,13 @@
   var humidity = jsonObject.main.humidity;
   var press = jsonObject.main.pressure
 
-  var fah = ((temperature - 273.15) * 1.8 + 32).toFixed(2);
+  var fah = ((temp - 273.15) * 1.8 + 32).toFixed(2);
 
   $("#location").text(city + "," + country); 
-  $("#desc").text("Description: " + description);
+  $("#desc").text("Description: " + desc);
   $("#temp").text("Temperature: " + fah + " F");
-  $("humidity").text("Humidity: " + humidity + "%");
-  $("#pressure").text("Pressure: " + pressure);
+  $("#humidity").text("Humidity: " + humidity + "%");
+  $("#pressure").text("Pressure: " + press);
 
   });
 </script>
