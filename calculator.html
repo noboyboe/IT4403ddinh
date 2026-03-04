@@ -4,6 +4,42 @@
 <head>
   <title>IT4403 Spring 2026 Website</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $function() {
+      $("calc").click(function() {
+
+        var input1 = parseFloat($("#x").val());
+        var input2 = parseFloat($("#y").val());
+        var input3 = ($("#op").val());
+        var input4 = ($("#color").val());
+
+        var result;
+
+        if (op == "+") {
+          result = x + y;
+        }
+          
+        else if (op == "-") {
+          result = x - y;
+        }
+          
+        else if (op == "*") {
+          result = x * y;
+        }
+
+        else if (op == "/") {
+          if (y == 0) {
+            $(#result).text("'y' cannot be 0");
+            return;
+          }
+          result = x / y;
+        }
+        $("#result").text("Result:" + answer);
+        $("#result").css("color", color);
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -22,7 +58,25 @@
   <div class="content">
     <h1>Calculator</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/labs.html" target="blank"> Back </a>
-    <p>calc</p>
+    <h2>Enter a value for 'X'</h2>
+    <p>X = <input type="text" id="x" value=""></p>
+    
+    <h2>Enter a value for 'Y'</h2>
+    <p>Y = <input type="text" id="y" value=""></p>
+
+    <h2>Select an Operation</h2>
+    <select id="op">
+      <option value="+">Addition (+)</option>
+      <option value="-">Subtraction (-)</option>
+      <option value="*">Multiplication (*)</option>
+      <option value="/">Division (/)</option>
+    </select>
+
+     <h2>Type in a color</h2>
+    <p>Color: <input type="text" id="color" value=""></p>
+
+    <button id="calc">Calculate</button>
+    
   </div>
 
   <div class="footer">
