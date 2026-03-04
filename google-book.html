@@ -13,7 +13,7 @@
       var info = data.volumeInfo;
       var link = info.WebReaderLink
       
-      $("#book-image").attr("src", info.imageLinks.thumbnail);
+      $("#image").attr("src", info.imageLinks.thumbnail);
       $("#title").text(info.title);
       $("#author").text(info.authors);
       $("#publisher").text(info.publisher);
@@ -27,7 +27,7 @@
 </script>
 
 <style>
-  #book-image {
+  #image {
     width: 150px;
     height: auto;
   }
@@ -51,7 +51,7 @@
     <h1>Single Book Data</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/milestone1.html" target="blank"> Back </a>
     
-    <img id="book-image">
+    <img id="image">
     <a id="website" target="_blank"> Google Books </a>
     <h2 id="title"></h2>
     <p><strong>Author:</strong> <span id="author"></span></p>
