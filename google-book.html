@@ -5,13 +5,13 @@
   <title>IT4403 Spring 2026 Website</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="google-books-book.json"></script>
 </head>
 
 <script>
   $(document).ready(function() {
     $.getJSON("google-books-book.json", function (data) {
       var info = data.volumeInfo;
+      var link = info.WebReaderLink
       
       $("#book-image").attr("src", info.imageLinks.thumbnail);
       $("#title").text(info.title);
@@ -19,14 +19,20 @@
       $("#publisher").text(info.publisher);
       $("#publishedDate").text(info.publishedDate);
       $("#description").html(info.description);
-      $("#website").text(info.WebReaderLink);
+      $("#website").attr("href", link);
 
     });
   });
       
-
-      
 </script>
+
+<style>
+  #book-image {
+    width: 150px
+    height: auto;
+  }
+  
+</style>
 
 <body>
   <div class="header">
@@ -46,6 +52,7 @@
     <a href="https://noboyboe.github.io/IT4403ddinh/milestone1.html" target="blank"> Back </a>
     
     <img id="book-image">
+    <a id="WebReaderLink" target="_blank"> Google Books </a>
     <h2 id="title"></h2>
     <p><strong>Author:</strong> <span id="author"></span></p>
     <p><strong>Publisher:</strong> <span id="publisher"></span></p>
