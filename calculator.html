@@ -6,40 +6,35 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
-    $function() {
-      $("calc").click(function() {
-
-        var input1 = parseFloat($("#x").val());
-        var input2 = parseFloat($("#y").val());
-        var input3 = ($("#op").val());
-        var input4 = ($("#color").val());
-
+    $(function() {
+      $("#calc").click(function() {
+        var x = parseFloat($("#x").val());
+        var y = parseFloat($("#y").val());
+        var op = $("#op").val();
+        var color = $("#color").val();
         var result;
 
         if (op == "+") {
           result = x + y;
         }
-          
         else if (op == "-") {
           result = x - y;
         }
-          
         else if (op == "*") {
           result = x * y;
         }
-
         else if (op == "/") {
           if (y == 0) {
-            $(#result).text("'y' cannot be 0");
+            $("#result").text("Y cannot be 0");
             return;
           }
           result = x / y;
         }
-        $("#result").text("Result:" + answer);
+        $("#result").text("Result: " + result);
         $("#result").css("color", color);
       });
     });
-  </script>
+</script>
 </head>
 
 <body>
