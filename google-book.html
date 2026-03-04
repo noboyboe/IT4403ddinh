@@ -9,6 +9,22 @@
 </head>
 
 <script>
+  $(document).ready(function() {
+    $.getJSON("google-books-book.json", function (data) {
+      var info = data.volumeInfo;
+      
+      $("#book-image").attr("src", info.imageLinks.thumbnail);
+      $("#title").text(info.title);
+      $("#author").text(info.authors);
+      $("#publisher").text(info.publisher);
+      $("#description").text(info.description);
+      $("#website").text(info.WebReaderLink);
+
+    });
+  });
+      
+
+      
 </script>
 
 <body>
@@ -25,16 +41,17 @@
   </div>
 
   <div class="content">
-    <h1>google-books-book.json</h1>
+    <h1>Single Book Data</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/milestone1.html" target="blank"> Back </a>
-
     
-
-    
-    
+    <img id="book-image">
+    <h2 id="title"></h2>
+    <p><strong>Author:</strong> <span id="author"></span></p>
+    <p><strong>Publisher:</strong> <span id="publisher"></span></p>
+    <p><strong>Published:</strong> <span id="publishedDate"></span></p>
+    <p id="description"></p> 
   </div>
-
-  <div class="footer">a href="https://noboyboe.github.io/IT4403ddinh/milestone1.html" target="blank"> Milestone 1 </a>
+  
     <h1>DISCLAIMER</h1>
     <p>This is a student created website for course projects in IT4403. </p>
     <a href="https://www.kennesaw.edu/ccse/academics/information-technology/" target="_blank">CCSE Department of IT Website</a>
