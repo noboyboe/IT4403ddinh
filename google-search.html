@@ -6,9 +6,41 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="google-books-book.json"></script>
+  <style>
+    content 
+      .book {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 15px;
+        border-radius: 8px;
+      }
+      .book img {
+        float: left;
+        margin-right: 15px;
+      }
+  </style>
 </head>
-
 <script>
+  $(document).ready(function() {
+    $.getJSON("google-books-search.json", function(data){
+      var title = book.volumeInfo.title;
+      var authors = book.volumeInfo.authors;
+      var desc = book.volumeInfo.description;
+      var thumb = book.volumeInfo.imageLinks?.thumbnail;
+      
+      var bookinfo = 
+        <img src="${thumb}" alt="thumbnail">
+        <h2>${title}</h2>
+        <p><strong>Author:</strong> ${authors}</p>
+        <p>${description}</p>;
+
+        $("#list").append(bookinfo);
+      });
+
+  });
+
+});
+  
 </script>
 
 <body>
@@ -25,12 +57,10 @@
   </div>
 
   <div class="content">
-    <h1>google-books-search.json</h1>
+    <h1>Book List Data</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/milestone1.html" target="blank"> Back </a>
-    
-    
 
-    
+    <div id="list"></div>
     
   </div>
 
