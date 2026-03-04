@@ -5,9 +5,7 @@
   <title>IT4403 Spring 2026 Website</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="google-books-book.json"></script>
   <style>
-    content 
       .book {
         border: 1px solid #ccc;
         padding: 15px;
@@ -26,16 +24,19 @@
 <script>
   $(document).ready(function() {
     $.getJSON("google-books-search.json", function(data){
+      $.each(data.items, function(index, book) {
       var title = book.volumeInfo.title;
       var authors = book.volumeInfo.authors;
       var desc = book.volumeInfo.description;
       var thumb = book.volumeInfo.imageLinks?.thumbnail;
       
-      var bookinfo = 
-        <img src="${thumb}" alt="thumbnail">
-        <h2>${title}</h2>
-        <p><strong>Author:</strong> ${authors}</p>
-        <p>${description}</p>;
+      var bookinfo = `
+        <div class="book">
+          <img src="${thumb}" alt="thumbnail">
+          <h2>${title}</h2>
+          <p><strong>Author:</strong> ${authors}</p>
+          <p>${desc}</p>
+        </div>;
 
         $("#list").append(bookinfo);
       });
