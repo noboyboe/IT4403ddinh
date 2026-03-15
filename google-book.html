@@ -11,7 +11,7 @@
   $(document).ready(function() {
     $.getJSON("google-books-book.json", function (data) {
       var info = data.volumeInfo;
-      var link = data.accessInfo.WebReaderLink
+      var link = data.accessInfo.webReaderLink
       
       $("#image").attr("src", info.imageLinks.thumbnail);
       $("#title").text(info.title);
