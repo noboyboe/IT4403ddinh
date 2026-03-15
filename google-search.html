@@ -27,7 +27,9 @@
     $.getJSON("google-books-search.json", function(data){
       $.each(data.items, function(index, book) {
       var title = book.volumeInfo.title;
+      var web = book.volumeInfo.previewLink;
       var authors = book.volumeInfo.authors;
+      var publish = book.volumeInfo.publisher;
       var desc = book.volumeInfo.description;
       var thumb = book.volumeInfo.imageLinks?.thumbnail;
       
@@ -36,6 +38,8 @@
           <img src="${thumb}" alt="thumbnail">
           <h2>${title}</h2>
           <p><strong>Author:</strong> ${authors}</p>
+          <p><strong>Publisher:</strong> ${publish}</p>
+          <p><strong>Website:</strong> ${web}</p>
           <p>${desc}</p>
         </div>`;
 
