@@ -11,7 +11,7 @@
   $(document).ready(function() {
     $.getJSON("google-books-book.json", function (data) {
       var info = data.volumeInfo;
-      var link = data.accessInfo.webReaderLink
+      var link = data.previewLink
       
       $("#image").attr("src", info.imageLinks.thumbnail);
       $("#title").text(info.title);
@@ -19,7 +19,7 @@
       $("#publisher").text(info.publisher);
       $("#publishedDate").text(info.publishedDate);
       $("#description").html(info.description);
-      $("#website").attr("href", link).text(link);
+      $("#website").attr("href", link);
 
     });
   });
@@ -57,6 +57,7 @@
     <p><strong>Author:</strong> <span id="author"></span></p>
     <p><strong>Publisher:</strong> <span id="publisher"></span></p>
     <p><strong>Published:</strong> <span id="publishedDate"></span></p>
+     <p><strong>Website:</strong> <a id="website" target="_blank">Google Books</a></span></p>
     <p id="description"></p> 
   </div>
 
