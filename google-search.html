@@ -30,15 +30,16 @@
       var web = book.volumeInfo.previewLink;
       var authors = book.volumeInfo.authors;
       var publish = book.volumeInfo.publisher;
+      var pub_date = book.volumeInfo.publishedDate;
       var desc = book.volumeInfo.description;
       var thumb = book.volumeInfo.imageLinks?.thumbnail;
-      
       var bookinfo = `
         <div class="book">
           <img src="${thumb}" alt="thumbnail">
           <h2>${title}</h2>
           <p><strong>Author:</strong> ${authors}</p>
           <p><strong>Publisher:</strong> ${publish}</p>
+          <p><strong>Published:</strong> ${pub_date}</p>
           <p><strong>Website:</strong> ${web}</p>
           <p>${desc}</p>
         </div>`;
