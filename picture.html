@@ -18,10 +18,24 @@
     "pic5.png"
   ];
 
+  const text = [
+    "This character's name is 'Durple'.",
+    "This character's name is 'Vineria'.",
+    "This character's name is 'Sky'.",
+    "This character's name is 'Oren'.",
+    "This character's name is 'Mr. Sun'."
+    ];
+
    function showImage() {
     $("#display").html(
       `<img src="${images[scroll]}" width="200" height="200">`
     );
+  }
+
+  function showText(){
+    $("#text").html(
+      `<p>${text[scroll]}</p>`
+      );
   }
 
   showImage();
@@ -32,6 +46,7 @@
       scroll = 0;
     }
     showImage();
+    showText();
   });
 
   $("#back").click(function(){
@@ -40,15 +55,16 @@
       scroll = images.length - 1;
     }
     showImage();
+    showText();
   });
 }); 
+  
 </script>
 
 <style>
   button {
-  font-size: 12px;
-  padding: 5px 10px;
-  width: auto;
+  font-size: 14px;
+  width: 50px;
 }
 </style>
 
@@ -69,6 +85,7 @@
     <h1>Picture Browser</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/labs.html" target="blank"> Back </a>
     <div id="display"></div>
+    <div id="text"></div>
     <button id="back">Back</button> <button id="next">Next</button>
   </div>
 
