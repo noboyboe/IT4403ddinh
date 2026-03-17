@@ -33,7 +33,7 @@
     showImage();
   });
 
-  $("#prev").click(function(){
+  $("#back").click(function(){
     scroll--;
     if (scroll < 0) {
       scroll = images.length - 1;
@@ -59,7 +59,7 @@
   <div class="content">
     <h1>Picture Browser</h1>
     <a href="https://noboyboe.github.io/IT4403ddinh/labs.html" target="blank"> Back </a>
-    <p>pic</p>
+    <button id="back">Back</button> <button id="next">Next</button>
   </div>
 
   <div class="footer">
