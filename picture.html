@@ -6,6 +6,43 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
+<script>
+  $(document).ready(function(){
+  let scroll = 0;
+  const images = [
+    "pic1.PNG",
+    "pic2.PNG",
+    "pic3.PNG",
+    "pic4.PNG",
+    "pic5.PNG"
+  ];
+
+   function showImage() {
+    $("#display").html(
+      `<img src="${images[scroll]}" width="200" height="200">`
+    );
+  }
+
+  showImage();
+
+  $("#next").click(function(){
+    scroll++;
+    if (scroll === images.length) {
+      scroll = 0;
+    }
+    showImage();
+  });
+
+  $("#prev").click(function(){
+    scroll--;
+    if (scroll < 0) {
+      scroll = images.length - 1;
+    }
+    showImage();
+  });
+}); 
+</script>
+
 <body>
   <div class="header">
     <h1>David Dinh</h1>
