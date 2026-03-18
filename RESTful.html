@@ -14,15 +14,15 @@
     .then(json => {
       const info = document.getElementById('profile');
 
-      info.innerHTML +=
-        <p>Name: ${profile.name}</p>
-        <p>Username: ${profile.username}</p>
-        <p>Email: ${profile.email}</p>
-        <p>City: ${profile.address.city}</p>
-        <p>Phone Number: ${profile.phone}</p>
-        <p>Website: ${profile.website}</p>
-        <p>Company: ${profile.company.name}</p>
-      ;
+      info.innerHTML += `
+        <p>Name: ${json.name}</p>
+        <p>Username: ${json.username}</p>
+        <p>Email: ${json.email}</p>
+        <p>City: ${json.address.city}</p>
+        <p>Phone Number: ${json.phone}</p>
+        <p>Website: ${json.website}</p>
+        <p>Company: ${json.company.name}</p>
+      `;
   });
 </script>
 
