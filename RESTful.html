@@ -11,8 +11,7 @@
     method: 'GET'
   })
     .then(response => response.json())
-    .then(json => {
-      const info = document.getElementById('profile');
+    .then(json => {const info = document.getElementById('profile');
 
       info.innerHTML += `
         <p>Name: ${json.name}</p>
@@ -24,6 +23,20 @@
         <p>Company: ${json.company.name}</p>
       `;
   });
+
+  fetch('https://jsonplaceholder.typicode.com/albums?userId=1', {
+    method: 'GET'
+  })
+    .then (response => response.json())
+    .then json => {const name = document.getElementById('album');
+
+      json.forEach(profile => {
+        name.innerHTML += `
+          <a href="https://noboyboe.github.io/IT4403ddinh/RESTful2.html" target="blank"> ${album.title}</a>
+        `;
+      });
+    });
+  
 </script>
 
 <body>
@@ -42,7 +55,13 @@
   <div class="content">
     <h1>RESTful APIs</h1>
 
+    <a href="https://noboyboe.github.io/IT4403ddinh/labs.html" target="blank"> Back </a>
+
+    <h2>User Profile</h2>
     <div id="profile"></div>
+
+    <h2>Albums</h2>
+    <div id="album"></div>
   </div>
   
 
