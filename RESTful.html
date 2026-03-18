@@ -31,16 +31,14 @@
       `;
   });
 
-  fetch('https://jsonplaceholder.typicode.com/albums?userId=1', {
-    method: 'GET'
-  })
+  fetch('https://jsonplaceholder.typicode.com/albums?userId=1')
     .then (response => response.json())
     .then (json => {const name = document.getElementById('album');
     name.innerHTML = "";
 
       json.forEach(album => {
         name.innerHTML += `
-          <a href=`https://noboyboe.github.io/IT4403ddinh/RESTful2.html?albumId=${album.id}` class="album" target="blank"> ${album.title}</a>
+          <a href="https://noboyboe.github.io/IT4403ddinh/RESTful2.html?albumId=${album.id}" class="album" target="blank"> ${album.title}</a>
         `;
       });
     });
