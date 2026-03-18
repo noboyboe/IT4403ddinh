@@ -46,7 +46,17 @@
         <p><strong>User ID: </strong>${json.userId}</p>
       `;
     });
-        
+
+  fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`)
+    .then(response => response.json())
+    .then(image => {
+      const imageVar = document.getElementById('image');
+      image.forEach(picture => {
+        imageVar.innerHTML += `
+        <img src="${picture.thumbnailUrl}" title="${picture.title}">
+      `;
+    });
+  });           
 </script>
 
   <div class="copyright">
