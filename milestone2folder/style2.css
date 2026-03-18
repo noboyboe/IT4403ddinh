@@ -1,8 +1,19 @@
 .header {
-  background: aqua;
-  height: 150px;
+  background: darkseagreen;
+  height: 180px;
   width: 1500px;
   text-align: center;
+  
+}
+
+.header p {
+  color: white;
+  font-size: 18px;
+}
+
+.header h1 {
+  color: white;
+  font-size: 45px;
 }
 
 body {
@@ -23,10 +34,15 @@ body {
 }
 
 .footer {
-  background: azure;
+  background: darkseagreen;
   width: 1480px;
   height: 50px;
   margin: 0;
   text-align: center;
   padding: 10px;
+}
+
+.footer p{
+  color: white;
+  font-size: 18px;
 }
