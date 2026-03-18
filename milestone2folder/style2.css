@@ -1,3 +1,14 @@
+.tabs {
+  width: 100%;
+  max-width: 1360px;
+  background-color: #666699; 
+  padding: 0px; 
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
 .tabbut {
   background-color: #666699;
   border: none;
