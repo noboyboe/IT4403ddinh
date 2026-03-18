@@ -7,7 +7,19 @@
 </head>
 
 <script>
+  const userChoice = new URLSearchParams(window.location.search);
+  const album_num = urlParams.get('albumId');
 
+  fetch('https://jsonplaceholder.typicode.com/albums/${album_num}')
+    .then(response => response.json())
+    .then(json => {const info = document.getElementById('desc');
+      info.innerHTML += `
+        <p><strong>Album Title: </strong>${json.title}</p>
+        <p><strong>Album ID: </strong>${json.id}</p>
+        <p><strong>User ID: </strong>${json.userId}</p>
+      `;
+    });
+        
 </script>
 
 <body>
@@ -24,8 +36,10 @@
   </div>
 
   <div class="content">
-    <h1>RESTful APIs</h1>
-    <a href="https://noboyboe.github.io/IT4403ddinh/labs.html" target="blank"> Back </a>
+    <h1>Album </h1>
+    <a href="https://noboyboe.github.io/IT4403ddinh/RESTful.html" target="blank"> Back </a>
+
+    <div id="desc"></div>
 
   </div>
   
