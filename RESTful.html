@@ -29,10 +29,11 @@
   })
     .then (response => response.json())
     .then (json => {const name = document.getElementById('albums');
+    name.innerHTML = "";
 
-      json.forEach(album => {
+      json.forEach(albums => {
         name.innerHTML += `
-          <a href="https://noboyboe.github.io/IT4403ddinh/RESTful2.html?albumId={album.id}" target="blank"> ${album.title}</a>
+          <a href="https://noboyboe.github.io/IT4403ddinh/RESTful2.html?albumId={album.Id}" target="blank"> ${album.title}</a>
         `;
       });
     });
@@ -60,7 +61,7 @@
     <div id="profile"></div>
 
     <h2>Albums</h2>
-    <div id="album"></div>
+    <div id="albums"></div>
   </div>
   
 
