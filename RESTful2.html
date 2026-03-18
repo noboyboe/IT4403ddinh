@@ -6,22 +6,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<script>
-  const userChoice = new URLSearchParams(window.location.search);
-  const album_num = urlParams.get('albumId');
-
-  fetch('https://jsonplaceholder.typicode.com/albums/${album_num}')
-    .then(response => response.json())
-    .then(json => {const info = document.getElementById('desc');
-      info.innerHTML += `
-        <p><strong>Album Title: </strong>${json.title}</p>
-        <p><strong>Album ID: </strong>${json.id}</p>
-        <p><strong>User ID: </strong>${json.userId}</p>
-      `;
-    });
-        
-</script>
-
 <body>
   <div class="header">
     <h1>David Dinh</h1>
@@ -43,12 +27,27 @@
 
   </div>
   
-
   <div class="footer">
     <h1>DISCLAIMER</h1>
     <p>This is a student created website for course projects in IT4403. </p>
     <a href="https://www.kennesaw.edu/ccse/academics/information-technology/" target="_blank">CCSE Department of IT Website</a>
   </div>
+
+  <script>
+  const userChoice = new URLSearchParams(window.location.search);
+  const album_num = userChoice.get('albumId');
+
+  fetch(`https://jsonplaceholder.typicode.com/albums/${album_num}`)
+    .then(response => response.json())
+    .then(json => {const info = document.getElementById('desc');
+      info.innerHTML += `
+        <p><strong>Album Title: </strong>${json.title}</p>
+        <p><strong>Album ID: </strong>${json.id}</p>
+        <p><strong>User ID: </strong>${json.userId}</p>
+      `;
+    });
+        
+</script>
 
   <div class="copyright">
     <p>© 2026 David Dinh - IT4403</p>
