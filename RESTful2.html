@@ -59,11 +59,11 @@
     .then(response => response.json())
     .then(image => {
       const imageVar = document.getElementById('image');
+      let html = '';
       image.forEach(picture => {
-        imageVar.innerHTML += `
-        <img src="${picture.Url}" title="${picture.title}">
-      `;
+        html += `<img src="${picture.url}" title="${picture.title}">`;  
     });
+    imageVar.innerHTML = html;
   });           
 </script>
 
