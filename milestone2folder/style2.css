@@ -1,3 +1,18 @@
+.tabbut {
+  background-color: #666699;
+  border: none;
+  padding: 25px 150px;
+  transition: 0.3s;
+  font-size: 17px;
+  margin: 1px;
+  cursor: pointer;
+  color: white;
+}
+
+.tabbut:hover {
+  background-color: #9999ff;
+}
+
 .header {
   background: darkseagreen;
   height: 180px;
@@ -46,3 +61,4 @@ body {
   color: white;
   font-size: 18px;
 }
+
