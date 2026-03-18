@@ -1,15 +1,28 @@
 .header {
-
+  background: aqua;
+  height: 150px
 }
 
 .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  font-family: 'Times New Roman', serif;
 
 }
 
 .content {
-
+  background: beige;
+  width: 1500px;
+  min-height: 1400px;
+  margin: 0;
 }
 
 .footer {
-
+  background: azure;
+  width: 1500px;
+  height: 100px;
+  margin: 0;
 }
