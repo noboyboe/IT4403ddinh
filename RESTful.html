@@ -6,6 +6,26 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
+<script>
+  fetch('https://jsonplaceholder.typicode.com/users/1', {
+    method: 'GET'
+  })
+    .then(response => response.json())
+    .then(json => {
+      const info = document.getElementById('profile');
+
+      info.innerHTML +=
+        <p>Name: ${profile.name}</p>
+        <p>Username: ${profile.username}</p>
+        <p>Email: ${profile.email}</p>
+        <p>City: ${profile.address.city}</p>
+        <p>Phone Number: ${profile.phone}</p>
+        <p>Website: ${profile.website}</p>
+        <p>Company: ${profile.company.name}</p>
+      ;
+  });
+</script>
+
 <body>
   <div class="header">
     <h1>David Dinh</h1>
@@ -21,7 +41,8 @@
 
   <div class="content">
     <h1>RESTful APIs</h1>
-    
+
+    <div id="profile"></div>
   </div>
   
 
