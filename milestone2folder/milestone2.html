@@ -32,55 +32,56 @@
     <p>Milestone 2 Assignment is ran by Google Books API</p>
   </div>
 
-  <script>
-$(document).ready(function() {
-  let startIndex = 0;
-  let list = "";
+<script>
+  $(document).ready(function() {
+    let startIndex = 0;
+    let list = "";
+    let totalItems = 0;
+    const perPage = 20;
 
-  $("#searchbutton").click(function(){
-    list = $("#search").val();
-    startIndex = 0;
-    bookResults();
-  });
     function bookResults() {
-      let url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=20`;
+      if(!list) return;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=${perPage}`;
 
-    $.getJSON(url, function(bookdata) {
-      console.log(bookdata);
-      $("#results").empty();
+      $.getJSON(url)
+      .done(function(bookdata) {
+        $("#results").empty();
+        totalItems = bookdata.totalItems || 0;
 
-      if (!bookdata.items) {
-        $("#results").html("<p>No results found.</p>");
-        return;
-      }
-
-      $.each(bookdata.items, function(index, book) {
-        let title = book.volumeInfo.title || "No Title Found";
-        let thumb = book.volumeInfo.imageLinks?.thumbnail || "No Thumbnail Found";
-
-        $("#results").append(`
-          <div>
-            <img src="${thumb}">
-            <p> <a href="details.html?id=${book.id}"> ${title} </a> </p>
-          </div>
-        `);
-        });
+        if (!bookdata.items) {
+          $("#results").html("<p>No results found</p>");
+          return;
+        }
       });
+        $.each(bookdata.items, function(index,book){
+          const title = book.volumeInfo.title || "No Title Found";
+          const thumb = book.volumeInfo.imageLinks?.thumbnail || "No Thumbnail Found";
+
+          $("#results").append(`
+            <div class="book-item">
+              <img src="${thumb}" alt="thumbnail">
+              <p><a href="details.html?id=${book.id}">${title}</a></p>
+            </div>
+          `);
+        });
+      }
+    $("#searchbutton").click(function(){
+      list = $("#search").val().trim();
+        startIndex = 0
+        bookResults();
+    });
+    $("#next").click(function(){
+      if (startIndex + perPage < totalItems) {
+        startIndex += perPage;
+        bookResults();
     }
-
-$("#next").click(function(){
-  if (startIndex < 40) {
-    startIndex += 20;
-    bookResults();
-  }
-});
-$("#prev").click(function(){
-  if (startIndex >= 20) {
-    startIndex -= 20;
-    bookResults();
-  }
-});
-
-});
+  });
+    $("#prev").click(function(){
+      if (startIndex - perPage >= 0 {
+        startIndex -= perPage;
+        bookResults();
+      }
+    });
+  });
 </script>
 </body>
