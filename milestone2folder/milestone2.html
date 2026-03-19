@@ -52,7 +52,7 @@
           $("#results").html("<p>No results found</p>");
           return;
         }
-      });
+
         $.each(bookdata.items, function(index,book){
           const title = book.volumeInfo.title || "No Title Found";
           const thumb = book.volumeInfo.imageLinks?.thumbnail || "No Thumbnail Found";
@@ -64,7 +64,8 @@
             </div>
           `);
         });
-      }
+      });
+    }
   }
     $("#searchbutton").click(function(){
       list = $("#search").val().trim();
