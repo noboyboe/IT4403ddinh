@@ -70,15 +70,20 @@ $(document).ready(function() {
       });
   }
 
-  $("#searchbutton").click(function() {
+let searchTimeout;
+
+$("#searchbutton").click(function() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(function() {
     list = $("#search").val().trim();
-    if (!list) { 
+    if (!list) {
       alert("Please enter a search term.");
       return;
     }
     startIndex = 0;
     bookResults();
-  });
+  }, 300);
+});
 
   $("#next").click(function() {
     if (startIndex + perPage < totalItems) {
