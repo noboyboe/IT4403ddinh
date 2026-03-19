@@ -18,7 +18,7 @@ $(document).ready(function() {
     bookResults();
   });
     function bookResults() {
-      let url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=60`;
+      let url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=20`;
 
     $.getJSON(url, function(bookdata) {
       console.log(bookdata);
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
       $.each(bookdata.items, function(index, book) {
         let title = book.volumeInfo.title || "No Title Found";
-        let thumb = book.volumeInfo.imageLinks?.thumbnail || "";
+        let thumb = book.volumeInfo.imageLinks?.thumbnail || "No Thumbnail Found";
 
         $("#results").append(`
           <div>
