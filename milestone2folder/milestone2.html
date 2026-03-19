@@ -18,7 +18,7 @@ $(document).ready(function() {
     bookResults();
   });
     function bookResults() {
-      let url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=20`;
+      let url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=60`;
 
     $.getJSON(url, function(bookdata) {
       console.log(bookdata);
