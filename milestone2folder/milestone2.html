@@ -9,10 +9,9 @@
 
 <body>
   <div class="tabs">
-     <button class="tabbut" onclick="window.location.href='https://noboyboe.github.io/IT4403ddinh/milestone2folder/milestone2.html';">Home</button>
-      <button class="tabbut" onclick="window.location.href='https://noboyboe.github.io/IT4403ddinh/milestone2folder/mybookshelf.html';">My Bookshelf</button>
+    <button class="tabbut" onclick="window.location.href='https://noboyboe.github.io/IT4403ddinh/milestone2folder/milestone2.html';">Home</button>
+    <button class="tabbut" onclick="window.location.href='https://noboyboe.github.io/IT4403ddinh/milestone2folder/mybookshelf.html';">My Bookshelf</button>
   </div>
-  
 
   <div class="header">
     <h1>Google Book Search</h1>
@@ -23,7 +22,7 @@
 
   <div class="content">
     <div id="results"></div>
-    
+
     <button id="prev">Previous</button>
     <button id="next">Next</button>
   </div>
@@ -33,29 +32,30 @@
   </div>
 
 <script>
-  $(document).ready(function() {
-    let startIndex = 0;
-    let list = "";
-    let totalItems = 0;
-    const perPage = 20;
+$(document).ready(function() {
+  let startIndex = 0;
+  let list = "";
+  let totalItems = 0;
+  const perPage = 20;
 
-    function bookResults() {
-      if(!list) return;
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=${perPage}`;
+  function bookResults() {
+    if (!list) return;
 
-      $.getJSON(url)
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=${perPage}`;
+
+    $.getJSON(url)
       .done(function(bookdata) {
         $("#results").empty();
         totalItems = bookdata.totalItems || 0;
 
-        if (!bookdata.items) {
+        if (!bookdata.items || bookdata.items.length === 0) {
           $("#results").html("<p>No results found</p>");
           return;
         }
 
-        $.each(bookdata.items, function(index,book){
+        $.each(bookdata.items, function(index, book) {
           const title = book.volumeInfo.title || "No Title Found";
-          const thumb = book.volumeInfo.imageLinks?.thumbnail || "No Thumbnail Found";
+          const thumb = book.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/100x150?text=No+Cover";
 
           $("#results").append(`
             <div class="book-item">
@@ -64,29 +64,37 @@
             </div>
           `);
         });
+      })
+      .fail(function() {
+        $("#results").html("<p>Error fetching data. Please try again.</p>");
       });
+  }
+
+  $("#searchbutton").click(function() {
+    list = $("#search").val().trim();
+    if (!list) { 
+      alert("Please enter a search term.");
+      return;
     }
-    $("#searchbutton").click(function(){
-      list = $("#search").val().trim();
-      if (!list) {
-        alert("Please enter a search term");
-        return;
-      }
-        startIndex = 0;
-        bookResults();
-    });
-    $("#next").click(function(){
-      if (startIndex + perPage < totalItems) {
-        startIndex += perPage;
-        bookResults();
+    startIndex = 0;
+    bookResults();
+  });
+
+  $("#next").click(function() {
+    if (startIndex + perPage < totalItems) {
+      startIndex += perPage;
+      bookResults();
     }
   });
-    $("#prev").click(function(){
-      if (startIndex - perPage >= 0) {
-        startIndex -= perPage;
-        bookResults();
-      }
-    });
-    });
+
+  $("#prev").click(function() {
+    if (startIndex - perPage >= 0) {
+      startIndex -= perPage;
+      bookResults();
+    }
+  });
+});
 </script>
+
 </body>
+</html>
