@@ -68,6 +68,10 @@
     }
     $("#searchbutton").click(function(){
       list = $("#search").val().trim();
+      if (!list) {
+        alert("Please enter a search term");
+        return;
+      }
         startIndex = 0;
         bookResults();
     });
