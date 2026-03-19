@@ -8,15 +8,16 @@
 </head>
 
 <script>
-  let startIndex = 0
+$(document).ready(function() {
+  let startIndex = 0;
   let list = "";
 
   $("#searchbutton").click(function(){
     list = $("#search").val();
     startIndex = 0;
     bookResults();
-
-    function bookResults();
+  });
+    function bookResults() {
       let url = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=20`;
 
     $.getJSON(url, function(bookdata) {
@@ -32,18 +33,19 @@
             <p> <a href="details.html?id=${book.id}"> ${title} </a> </p>
           </div>
         `);
+        });
       });
-    });
-  } 
+    }
+  }
 
-$("next").click(function(){
+$("#next").click(function(){
   if (startIndex < 40) {
     startIndex += 20;
     bookResults();
   }
 });
-$("prev").click(function(){
-  if (startindex >= 20) {
+$("#prev").click(function(){
+  if (startIndex >= 20) {
     startIndex -= 20;
     bookResults();
   }
@@ -66,7 +68,7 @@ $("prev").click(function(){
   </div>
 
   <div class="content">
-    <div id="result"</div>
+    <div id="results"</div>
     
     <button id="prev">Previous</button>
     <button id="next">Next</button>
