@@ -41,7 +41,9 @@ $(document).ready(function() {
   function bookResults() {
     if (!list) return;
 
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=${perPage}`;
+    const apiKey = "AIzaSyD7hyKf_3eqgQqgAHFcgn_ywbuZsDegMXI";
+
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(list)}&startIndex=${startIndex}&maxResults=${perPage}&key=${apiKey}`;
 
     $.getJSON(url)
       .done(function(bookdata) {
