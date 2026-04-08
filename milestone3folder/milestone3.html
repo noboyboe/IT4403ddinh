@@ -20,8 +20,8 @@
       <h2>Upcoming</h2>
       <div id="upcoming"></div>
     </div>
-    <h2>Search Results</h2>
     <div class="resu">
+      <h2>Search results for:</h2>
       <div id="searchTitle"></div>
       <div id="resultsCount"></div>
       <div id="results"></div>
@@ -67,7 +67,7 @@ function displayUpcoming(movies) {
     let current_page = 1;
  $("#searchbutton").click(function () {
     let query = $("#userinput").val();
-    $("#searchTitle").text(`Search results for: "${query}"`);
+    $("#searchTitle").text(`"${query}"`);
 
     $.get(`${url}/search/movie?api_key=${api_key}&query=${query}`, function (data) {
         $("#resultsCount").text(`Found ${data.total_results} results`);
