@@ -33,25 +33,24 @@
 
     let MovieResults = []
     let current_page = 1;
-    $("#searchbutton").click(function () {
+ $("#searchbutton").click(function () {
     let query = $("#userinput").val();
-      
-    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}`, function (display) {
-        MovieResults = display.results.slice(0, 50);
+
+    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}`, function (data) {
+        MovieResults = data.results.slice(0, 50);
         current_page = 1;
         display(current_page);
         paginationFunct();
     });
 });
-
     function display(page_num) {
-      $("results").empty();
-      let top = (page - 1) * 10;
-      let bottom = top + 10;
-      let pageItems = currentResults.slice(start, end);
-      listdisplay.forEach(movie => {
+    $("#results").empty();
+    let start = (page_num - 1) * 10;
+    let end = start + 10;
+    let pageItems = MovieResults.slice(start, end);
+    pageItems.forEach(movie => {
         $("#results").append(`
-            <div class="movie" display-id="${movie.id}">
+            <div class="movie" data-id="${movie.id}">
                 <img src="${image + movie.poster_path}" />
                 <p>${movie.title}</p>
                 <p>${movie.release_date}</p>
@@ -62,16 +61,10 @@
 }
 
   function paginationFunct() {
-    $("results").empty();
+    $("#pagination").empty();
     for (let i = 1; i <= 5; i++) {
         $("#pagination").append(`
-            <button class="morebutton" display-page="${i}">${i}</button>
-        `);
-    }
-}
-for (let i = 1; i <= 5; i++) {
-        $("#pagination").append(`
-            <button class="morebutton" display-page="${i}">${i}</button>
+            <button class="pageBtn" data-page="${i}">${i}</button>
         `);
     }
 }
