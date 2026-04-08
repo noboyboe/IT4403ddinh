@@ -24,6 +24,18 @@
   </div>
 
   <script>
+    const options = {
+    method: 'GET',
+    headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWNkZmM2ZTRhNzdhNzA5OTQwMTJiNjgyNzBhNWVjZiIsIm5iZiI6MTc3NTY2ODA2MS40NjQsInN1YiI6IjY5ZDY4YjVkODUyOGVmY2MyNjZhZWRiZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SpxtEsY1FN-dcx2f5H4D_3M0OEMguaCW77Mj4JeErEg'
+    }
+  };
+
+  fetch('https://api.themoviedb.org/3/authentication', options)
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
     
   </script>
 
