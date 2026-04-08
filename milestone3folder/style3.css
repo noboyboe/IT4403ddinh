@@ -25,8 +25,8 @@
 #results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 20px;
-  max-width: 2300px;
+  gap: 30px;
+  max-width: 1400px;
   margin: auto;
 }
 
@@ -34,11 +34,35 @@
   display: flex;
   justify-content: center; 
   gap: 10px;              
+  padding: 20px;
 }
 
-.pagination {
-  text-align: center;
-  margin-top: 20px;
+.movie img{
+  border-radius: 10px;
+}
+
+.movie {
+  background-color:grey;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.pageBtn {
+  width:50px;
+  height:50px;
+  background-color: white;
+  margin: 8px;
+  padding:10px;
+  border-radius:50%;
+  display: inline-flex;  
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.pageBtn:hover {
+  background-color: #444;
+  color:white;
 }
 
 body {
