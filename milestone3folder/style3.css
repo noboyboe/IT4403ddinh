@@ -22,6 +22,19 @@
 
 }
 
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+  max-width: 2300px;
+  margin: auto;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -35,7 +48,7 @@ body {
   min-height: 1400px;
 }
 
-.content h1{
+.content h2{
   text-align: center;
 }
 
