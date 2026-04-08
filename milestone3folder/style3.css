@@ -47,6 +47,14 @@
 
 }
 
+#upcoming {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;
+}
+
 #userinput {
   padding:10px;
   border-radius:20px;
