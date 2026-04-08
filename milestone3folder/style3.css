@@ -72,6 +72,7 @@
   gap: 30px;
   max-width: 1400px;
   margin: auto;
+  padding-top: 10px;
 }
 
 #pagination {
@@ -90,6 +91,14 @@
   padding-left: 150px;
   padding-right: 150px;
   width: 1000px;
+}
+
+.up_sect {
+  text-align: left;
+}
+
+.resu {
+  padding-top:20px;
 }
 
 .movie img{
