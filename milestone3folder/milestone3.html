@@ -35,9 +35,27 @@
 
 $(document).ready(function () {
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
-        MovieResults = data.results.slice(0, 20);
+        let upcomingMovies = data.results.slice(0, 20);
+        displayUpcoming(upcomingMovies);
     });
 });
+
+function displayUpcoming(movies) {
+    $("#upcoming").empty();
+    movies.forEach(movie => {
+        let card = $(`
+            <div class="movie" data-id="${movie.id}">
+                <img src="${image + movie.poster_path}" />
+                <h3>${movie.title}</h3>
+                <p>${movie.release_date}</p>
+            </div>
+        `);
+        $("#upcoming").append(card);
+        setTimeout(() => {
+            card.addClass("show");
+        }, 50);
+    });
+}
 
     let MovieResults = []
     let current_page = 1;
