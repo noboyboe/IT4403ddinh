@@ -52,6 +52,8 @@
         let smoothLoad = $(`
             <div class="movie" data-id="${movie.id}">
                 <img src="${image + movie.poster_path}" />
+            </div>
+            <div class="movieDetail" data-id="$movie.id}>
                 <h3>${movie.title}</h3>
                 <p>Released: ${movie.release_date}</p>
                 <p>Rating: ${movie.vote_average}</p>
