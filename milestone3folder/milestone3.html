@@ -79,22 +79,22 @@ $(document).on("click", ".pageBtn", function () {
     
 $(document).on("click", ".movie", function () {
     let movieId = $(this).data("id");
-  
-$.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
-    $("#movieInfo").html(`
-      <div class="movie-details">
-        <img src="${image + movie.poster_path}" class="details-img"/>
-        <div class="details-text">
-          <p><strong>Title:</strong> ${movie.title}</p>
-          <p><strong>Overview:</strong> ${movie.overview}</p>
-          <p><strong>Release:</strong> ${movie.release_date}</p>
-          <p><strong>Rating:</strong> ${movie.vote_average}</p>
-        </div>
-      </div>
-    `);
-    setTimeout(() => {
-      $(".movie-details").addClass("show");
-    }, 50);
+    $.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
+        $("#movieInfo").html(`
+          <div class="movie-details">
+            <img src="${image + movie.poster_path}" class="details-img"/>
+            <div class="details-text">
+              <p><strong>Title:</strong> ${movie.title}</p>
+              <p><strong>Overview:</strong> ${movie.overview}</p>
+              <p><strong>Release:</strong> ${movie.release_date}</p>
+              <p><strong>Rating:</strong> ${movie.vote_average}</p>
+            </div>
+          </div>
+        `);
+        setTimeout(() => {
+          $(".movie-details").addClass("show");
+        }, 50);
+    });
 });
       
   </script>
