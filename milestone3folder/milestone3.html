@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Milestone 3</title>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <link rel="stylesheet" href="style3.css">
 </head>
 
 <body>
@@ -14,7 +7,7 @@
     <input type="text" id="userinput" placeholder="Enter keywords...">
     <button id="searchbutton">Search</button>
   </div>
-  
+
   <div class="content">
     <h2>Search Results</h2>
     <div id="results"></div>
@@ -76,27 +69,21 @@ $(document).on("click", ".pageBtn", function () {
     current_page = $(this).data("page");
     display(current_page);
 });
-    
+
 $(document).on("click", ".movie", function () {
     let movieId = $(this).data("id");
-    $.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
+
+$.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
         $("#movieInfo").html(`
-          <div class="movie-details">
-            <img src="${image + movie.poster_path}" class="details-img"/>
-            <div class="details-text">
-              <p><strong>Title:</strong> ${movie.title}</p>
-              <p><strong>Overview:</strong> ${movie.overview}</p>
-              <p><strong>Release:</strong> ${movie.release_date}</p>
-              <p><strong>Rating:</strong> ${movie.vote_average}</p>
-            </div>
-          </div>
+            <img src="${image + movie.poster_path}" />
+            <h2>${movie.title}</h2>
+            <p>${movie.overview}</p>
+            <p>Release: ${movie.release_date}</p>
+            <p>Rating: ${movie.vote_average}</p>
         `);
-        setTimeout(() => {
-          $(".movie-details").addClass("show");
-        }, 50);
     });
 });
-      
+
   </script>
 
 </body>
