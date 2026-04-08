@@ -49,6 +49,8 @@
     let end = start + 10;
     let pageItems = MovieResults.slice(start, end);
     pageItems.forEach(movie => {
+        
+    pageItems.forEach(movie => {
         let smoothLoad = $(`
             <div class="movie" data-id="${movie.id}">
                 <img src="${image + movie.poster_path}" />
@@ -57,11 +59,12 @@
                 <p>Rating: ${movie.vote_average}</p>
             </div>
         `);
-      $("#results").append(smoothLoad);
-      setTimeout(() => {
-        smoothLoad.addClass("show");
-    }, 50); 
-});
+        $("#results").append(smoothLoad);
+        setTimeout(() => {
+            smoothLoad.addClass("show");
+        }, 50); 
+    });
+} 
 
   function paginationFunct() {
     $("#pagination").empty();
