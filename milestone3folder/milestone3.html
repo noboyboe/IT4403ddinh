@@ -50,7 +50,6 @@
     let pageItems = MovieResults.slice(start, end);
     pageItems.forEach(movie => {
         let smoothLoad = $(`
-            <div class="movieInfo" data-id="${movie.id}">
             <div class="movie" data-id="${movie.id}">
                 <img src="${image + movie.poster_path}" />
                 <h3>${movie.title}</h3>
