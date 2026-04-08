@@ -10,16 +10,50 @@
 
 .header {
   background: #5E5E5E;
-  height: 180px;
+  height: auto;
   text-align: center;
+  padding: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.150);
 }
 
 .header p {
 
 }
 
-.header h1 {
+.header h2 {
+  font-weight: lighter;
 
+}
+
+#searchbutton {
+  width:80px;
+  height:50px;
+  background-color: whitesmoke;
+  margin: 8px;
+  padding:10px;
+  border-radius:20px;
+  display: inline-flex;  
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#searchbutton:hover {
+  background-color: #444;
+  color:white;
+  
+}
+
+#userinput {
+  padding:10px;
+  border-radius:20px;
+  width:350px;
+  height:25px;
+  font-size:15px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 #results {
@@ -37,6 +71,17 @@
   padding: 20px;
 }
 
+#movieInfo {
+  text-align: center;
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  width: 1000px;
+}
+
 .movie img{
   border-radius: 10px;
 }
@@ -45,47 +90,69 @@
   background-color:grey;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.250);
+  padding-left: 25px;
+}
+
+.movie:hover{
+  color:black;
+  background-color: #B0AEAE;
+  cursor: pointer;
+}
+
+.movie p{
+  font-size: 17px;
+  
 }
 
 .pageBtn {
   width:50px;
   height:50px;
-  background-color: white;
-  margin: 8px;
+  background-color: whitesmoke;
+  margin: 12px;
   padding:10px;
   border-radius:50%;
   display: inline-flex;  
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s, transform 0.1s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }
 
 .pageBtn:hover {
-  background-color: #444;
+  background-color:#444;
   color:white;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
+  display: flex;;
   background-color: #404040;
   color: white;
   font-size: 18px;
+  flex-direction: column;
+  margin: 0px
 }
 
 .content {
   min-height: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 30px;
+  padding-top: 8px;
 }
 
 .content h2{
   text-align: center;
+  font-weight: lighter;
 }
 
 .footer {
   background: black;
   padding: 15px;
   text-align: center;
+  font-size: 16px;
 }
 
 .footer p{
