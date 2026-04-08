@@ -78,6 +78,7 @@ $(document).on("click", ".movie", function () {
   
 $.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
         $("#movieInfo").html(`
+            <img src="${image + movie.poster_path}" />
             <h2>${movie.title}</h2>
             <p>${movie.overview}</p>
             <p>Release: ${movie.release_date}</p>
@@ -85,8 +86,7 @@ $.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
         `);
     });
 });
-    
-    
+      
   </script>
 
 </body>
