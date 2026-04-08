@@ -52,9 +52,9 @@
         $("#results").append(`
             <div class="movie" data-id="${movie.id}">
                 <img src="${image + movie.poster_path}" />
-                <h3>${movie.title}</h3>
-                <p>${movie.release_date}</p>
-                <p>${movie.vote_average}</p>
+                <h3>Title: ${movie.title}</h3>
+                <p>Released: ${movie.release_date}</p>
+                <p>Rating: ${movie.vote_average}</p>
             </div>
         `);
     });
