@@ -39,7 +39,7 @@
 
 $(document).ready(function () {
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
-        let upcomingMovies = data.results.slice(0, 20);
+        let upcomingMovies = data.results.slice(0, 50);
         displayUpcoming(upcomingMovies);
     });
 });
