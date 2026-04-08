@@ -26,6 +26,16 @@
 
 }
 
+#upcoming {
+  overflow: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;
+  display: flex;
+  max-width: 1350px;
+  margin: auto;
+}
+
 #searchbutton {
   width:80px;
   height:50px;
@@ -45,14 +55,6 @@
   background-color: #444;
   color:white;
 
-}
-
-#upcoming {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 20px;
-  scroll-behavior: smooth;
 }
 
 #userinput {
