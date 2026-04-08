@@ -11,7 +11,7 @@
   <div class="header">
     <h1>The Movie Database</h1>
     <h2>Search For Movies</h2>
-    <input type="text" id="search" placeholder="Enter keywords...">
+    <input type="text" id="userinput" placeholder="Enter keywords...">
     <button id="searchbutton">Search</button>
   </div>
   
@@ -24,18 +24,72 @@
   </div>
 
   <script>
-    const options = {
-    method: 'GET',
-    headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWNkZmM2ZTRhNzdhNzA5OTQwMTJiNjgyNzBhNWVjZiIsIm5iZiI6MTc3NTY2ODA2MS40NjQsInN1YiI6IjY5ZDY4YjVkODUyOGVmY2MyNjZhZWRiZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SpxtEsY1FN-dcx2f5H4D_3M0OEMguaCW77Mj4JeErEg'
-    }
-  };
+    const api_key = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWNkZmM2ZTRhNzdhNzA5OTQwMTJiNjgyNzBhNWVjZiIsIm5iZiI6MTc3NTY2ODA2MS40NjQsInN1YiI6IjY5ZDY4YjVkODUyOGVmY2MyNjZhZWRiZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SpxtEsY1FN-dcx2f5H4D_3M0OEMguaCW77Mj4JeErEg";
+    const url = "https://api.themoviedb.org/3";
+    const image = "https://image.tmdb.org/t/p/w200";
 
-  fetch('https://api.themoviedb.org/3/authentication', options)
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
+    let MovieResults = []
+    let current_page = 1;
+    $("#searchbutton").click(function () {
+    let query = $("#userinput").val();
+      
+    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}`, function (display) {
+        MovieResults = display.results.slice(0, 50);
+        current_page = 1;
+        display(current_page);
+        paginationFunct();
+    });
+});
+
+    function display(page_num) {
+      $("results").empty();
+      let top = (page - 1) * 10;
+      let bottom = top + 10;
+      let pageItems = currentResults.slice(start, end);
+      listdisplay.forEach(movie => {
+        $("#results").append(`
+            <div class="movie" display-id="${movie.id}">
+                <img src="${image + movie.poster_path}" />
+                <p>${movie.title}</p>
+                <p>${movie.release_date}</p>
+                <p>${movie.vote_average}</p>
+            </div>
+        `);
+    });
+}
+
+  function paginationFunct() {
+    $("results").empty();
+    for (let i = 1; i <= 5; i++) {
+        $("#pagination").append(`
+            <button class="morebutton" display-page="${i}">${i}</button>
+        `);
+    }
+}
+for (let i = 1; i <= 5; i++) {
+        $("#pagination").append(`
+            <button class="morebutton" display-page="${i}">${i}</button>
+        `);
+    }
+}
+$(document).on("click", ".pageBtn", function () {
+    current_page = $(this).data("page");
+    display(current_page);
+});
+    
+$(document).on("click", ".movie", function () {
+    let movieId = $(this).data("id");
+  
+$.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
+        $("#movieInfo").html(`
+            <h2>${movie.title}</h2>
+            <p>${movie.overview}</p>
+            <p>Release: ${movie.release_date}</p>
+            <p>Rating: ${movie.vote_average}</p>
+        `);
+    });
+});
+    
     
   </script>
 
