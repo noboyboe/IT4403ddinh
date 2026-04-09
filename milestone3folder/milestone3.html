@@ -14,7 +14,7 @@
     <input type="text" id="userinput" placeholder="Enter keywords...">
     <button id="searchbutton">Search</button>
   </div>
-
+<!-- All movie information can be seen in this div -->
   <div class="content">
     <div class="up_sect">
       <h2>Upcoming</h2>
@@ -37,13 +37,14 @@
     const url = "https://api.themoviedb.org/3";
     const image = "https://image.tmdb.org/t/p/w200";
 
+// This function provides information on the first 20 upcoming movies
 $(document).ready(function () {
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
-        let upcomingMovies = data.results.slice(0, 50);
+        let upcomingMovies = data.results.slice(0, 20);
         displayUpcoming(upcomingMovies);
     });
 });
-
+// This function displays those said 20 movies
 function displayUpcoming(movies) {
     $("#upcoming").empty();
     movies.forEach(movie => {
@@ -54,6 +55,7 @@ function displayUpcoming(movies) {
                 <p>${movie.release_date}</p>
             </div>
         `);
+      // This appends a fading in animation for the upcoming movies
         $("#upcoming").append(card);
         setTimeout(() => {
             card.addClass("show");
@@ -61,6 +63,7 @@ function displayUpcoming(movies) {
     });
 }
 
+    // Upon clicking the search button, the user's input is queried into display()
  $("#searchbutton").click(function () {
       current_page = 1;
       let query = $("#userinput").val();
@@ -68,16 +71,16 @@ function displayUpcoming(movies) {
       display(current_page);
       paginationFunct();
     });
-    
+
+    // the $.get function is used to gather information from the movie database
     function display(page_num) {
       let query = $("#userinput").val();
       $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function (data) {
         $("#results").empty();
-        
-      let start = 0
-      let end = 10
+        // slicing the page limits 10 movies per page
       let pageItems = data.results.slice(0, 10);
-        
+
+        // After clicking search, an animation for each item is played for the user and displaying the movies along with its information.
         pageItems.forEach(movie => {
           let smoothLoad = $(`
             <div class="movie" data-id="${movie.id}">
@@ -87,6 +90,7 @@ function displayUpcoming(movies) {
               <p>Rating: ${movie.vote_average}</p>
             </div>
           `);
+          // This is a fading in animation for the searched movie results
           $("#results").append(smoothLoad);
           setTimeout(() => {
             smoothLoad.addClass("show");
@@ -96,19 +100,22 @@ function displayUpcoming(movies) {
       });
     }
 
+    // This is the function that allows the user to click through each page
   function paginationFunct() {
     $("#pagination").empty();
     for (let i = 1; i <= 5; i++) {
         $("#pagination").append(`
-            <button class="pageBtn" data-page="${i}">${i}</button>
+            <button class="pagebutton" data-page="${i}">${i}</button>
         `);
     }
 }
-$(document).on("click", ".pageBtn", function () {
+    // Clicking the next page will change into a different set of movies
+$(document).on("click", ".pagebutton", function () {
     current_page = $(this).data("page");
     display(current_page); 
 });
 
+// Upon clicking on a movie, additional information is displayed at the bottom of the website
 $(document).on("click", ".movie", function () {
     let movieId = $(this).data("id");
 
@@ -117,7 +124,7 @@ $.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
             <img src="${image + movie.poster_path}" />
             <h2>${movie.title}</h2>
             <p>${movie.overview}</p>
-            <p>Release: ${movie.release_date}</p>
+            <p>Released: ${movie.release_date}</p>
             <p>Rating: ${movie.vote_average}</p>
         `);
     });
