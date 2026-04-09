@@ -61,40 +61,35 @@ function displayUpcoming(movies) {
     });
 }
 
-    let MovieResults = []
-    let current_page = 1;
  $("#searchbutton").click(function () {
-     current_page = 1;
-    let query = $("#userinput").val();
-    $("#searchTitle").text(`"${query}"`);
-
-    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${current_page}`, function (data) {
-        $("#resultsCount").text(`Found ${data.total_results} results`);
-        MovieResults = data.results.slice(0, 50);
-        display(current_page);
-        paginationFunct();
+      current_page = 1;
+      let query = $("#userinput").val();
+      $("#searchTitle").text(`"${query}"`);
+      display(current_page);
+      paginationFunct();
     });
-}); 
+    
     function display(page_num) {
-    $("#results").empty();
-    let start = (page_num - 1) * 10;
-    let end = start + 10;
-    let pageItems = MovieResults.slice(start, end);
-    pageItems.forEach(movie => {
-        let smoothLoad = $(`
+      let query = $("#userinput").val();
+      $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function (data) {
+        $("#results").empty();
+        data.results.forEach(movie => {
+          let smoothLoad = $(`
             <div class="movie" data-id="${movie.id}">
-                <img src="${image + movie.poster_path}" />
-                <h3>${movie.title}</h3>
-                <p>Released: ${movie.release_date}</p>
-                <p>Rating: ${movie.vote_average}</p>
+              <img src="${image + movie.poster_path}" />
+              <h3>${movie.title}</h3>
+              <p>Released: ${movie.release_date}</p>
+              <p>Rating: ${movie.vote_average}</p>
             </div>
-        `);
-        $("#results").append(smoothLoad);
-        setTimeout(() => {
+          `);
+          $("#results").append(smoothLoad);
+          setTimeout(() => {
             smoothLoad.addClass("show");
-        }, 50); 
-    });
-} 
+          }, 50);
+        });
+        $("#resultsCount").text(`Found ${data.total_results} results`);
+      });
+    }
 
   function paginationFunct() {
     $("#pagination").empty();
