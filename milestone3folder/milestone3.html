@@ -105,12 +105,9 @@ function displayUpcoming(movies) {
 }
 $(document).on("click", ".pageBtn", function () {
     current_page = $(this).data("page");
-    let query = $("#userinput").val();
-    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${current_page}`, function (data) {
-        MovieResults = data.results;
-        display(current_page);
-    });
+    display(current_page); 
 });
+
 $(document).on("click", ".movie", function () {
     let movieId = $(this).data("id");
 
