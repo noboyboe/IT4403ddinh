@@ -70,12 +70,13 @@ function displayUpcoming(movies) {
     });
     
     function display(page_num) {
+      $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function (data) {
+        $("#results").empty();
+        
       let query = $("#userinput").val();
       let start = (page_num - 1) * 10;
       let end = start + 10;
       let pageItems = data.results.slice(start, end);
-      $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function (data) {
-        $("#results").empty();
         
         data.results.forEach(movie => {
           let smoothLoad = $(`
