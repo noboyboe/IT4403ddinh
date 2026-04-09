@@ -64,6 +64,7 @@ function displayUpcoming(movies) {
     let MovieResults = []
     let current_page = 1;
  $("#searchbutton").click(function () {
+     current_page = 1;
     let query = $("#userinput").val();
     $("#searchTitle").text(`"${query}"`);
 
