@@ -67,10 +67,9 @@ function displayUpcoming(movies) {
     let query = $("#userinput").val();
     $("#searchTitle").text(`"${query}"`);
 
-    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}`, function (data) {
+    $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${current_page}`, function (data) {
         $("#resultsCount").text(`Found ${data.total_results} results`);
         MovieResults = data.results.slice(0, 50);
-        current_page = 1;
         display(current_page);
         paginationFunct();
     });
