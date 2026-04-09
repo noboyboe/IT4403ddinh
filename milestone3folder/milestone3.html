@@ -25,6 +25,7 @@
     <div id="resultsCount"></div>
     <div id="results"></div>
     <div id="pagination"></div>
+    <div id="pageCount"></div>
     <div id="movieInfo"></div>
   </div>
 
@@ -71,6 +72,7 @@ function displayUpcoming(movies) {
       $("#searchTitle").text(`"${query}"`);
       display(current_page);
       paginationFunct();
+     $("#pageCount").text(`Page ${current_page}`);
     });
 
     // the $.get function is used to gather information from the movie database
@@ -114,6 +116,7 @@ function displayUpcoming(movies) {
 $(document).on("click", ".pagebutton", function () {
     current_page = $(this).data("page");
     display(current_page); 
+    $("#pageCount").text(`Page ${current_page}`);
 });
 
 // Upon clicking on a movie, additional information is displayed at the bottom of the website
