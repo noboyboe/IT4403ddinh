@@ -66,6 +66,7 @@
   justify-content: center; 
   gap: 10px;              
   padding: 20px;
+  padding-bottom: 5px;
 }
 
 #movieInfo {
@@ -83,6 +84,11 @@
 
 #movieInfo img {
   border-radius: 20px;
+}
+
+#pageCount {
+  padding-bottom: 15px;
+  
 }
 
 .up_sect {
