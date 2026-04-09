@@ -98,8 +98,7 @@ function displayUpcoming(movies) {
 
   function paginationFunct() {
     $("#pagination").empty();
-    let totalPages = Math.ceil(MovieResults.length / 10); 
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= 5; i++) {
         $("#pagination").append(`
             <button class="pageBtn" data-page="${i}">${i}</button>
         `);
