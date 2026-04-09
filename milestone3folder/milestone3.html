@@ -78,7 +78,7 @@ function displayUpcoming(movies) {
       let end = 10
       let pageItems = data.results.slice(0, 10);
         
-        pageItems.results.forEach(movie => {
+        pageItems.forEach(movie => {
           let smoothLoad = $(`
             <div class="movie" data-id="${movie.id}">
               <img src="${image + movie.poster_path}" />
