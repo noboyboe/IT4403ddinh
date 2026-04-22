@@ -142,20 +142,21 @@
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
-
-  $("#gridView").click(function() {
+}
+    
+  $(document).on("click", "#gridView", function() {
     current_view = "grid";
     $("#gridView").addClass("active");
     $("#listView").removeClass("active");
+    display(current_page);
+});
 
-  });
-
-  $("#listView").click(function() {
+  $(document).on("click", "#listView", function() {
     current_view = "list";
     $("#listView").addClass("active");
     $("#gridView").removeClass("active");
-  });
-}
+    display(current_page);
+});
     function pagination() {
       const temp = $("#pagination_temp").html();
       const pages = [1,2,3,4,5];
