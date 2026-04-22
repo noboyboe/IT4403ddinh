@@ -115,14 +115,19 @@
     }
 
     function render(container, movies) {
-  const temp = $("#moviesCard_temp").html();
-  const formatted = movies.map(movie => ({
-    ...moviesCard([movie])[0],
-    viewMode: current_view === "grid" ? "grid-item" : "list-item"
-  }));
+      const temp = $("#moviesCard_temp").html();
+      const formatted = movies.map(movie => ({
+        ...moviesCard([movie])[0],
+        viewMode: current_view === "grid" ? "grid-item" : "list-item"
+    }));
 
   const rendered = Mustache.render(temp, {movies: formatted});
   $(container).html(rendered);
+      if (container === "#results") {
+        $(container)
+          .removeClass("grid list")
+          .addClass(current_view)
+      }
 
   setTimeout(() => {
     $(".movie").addClass("show");
