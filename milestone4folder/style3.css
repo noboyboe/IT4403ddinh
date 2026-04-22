@@ -169,19 +169,13 @@ body {
   padding-top: 8px;
 }
 
-#results.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
 .grid-item {
-  width: 150px;
   text-align: center;
 }
 
 #results.list {
   display: block;
+  min-width: 1400px;
 }
 
 .list-item {
