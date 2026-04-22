@@ -9,6 +9,32 @@
 </head>
 
 <body>
+
+  <script id="movie-card-template" type="x-tmpl-mustache">
+  {{#movies}}
+    <div class="movie" data-id="{{id}}">
+      <img src="{{poster}}" />
+      <h3>{{title}}</h3>
+      <p>Released: {{release_date}}</p>
+      <p>Rating: {{vote_average}}</p>
+    </div>
+  {{/movies}}
+</script>
+
+<script id="detail_temp" type="x-tmpl-mustache">
+  <img src="{{poster}}" />
+  <h2>{{title}}</h2>
+  <p>{{overview}}</p>
+  <p>Released: {{release_date}}</p>
+  <p>Rating: {{vote_average}}</p>
+</script>
+
+<script id="pagination-temp" type="x-tmpl-mustache">
+  {{#pages}}
+    <button class="pagebutton" data-page="{{.}}">{{.}}</button>
+  {{/pages}}
+</script>
+  
   <div class="header">
     <h1>The Movie Database</h1>
     <p>(Improved SPA UI)</p>
@@ -61,9 +87,9 @@
     });
 });
 
-    $("#searchButton").click(function() {
+    $("#searchbutton").click(function() {
       current_page = 1;
-      let query = $("userinput").val();
+      let query = $("#userinput").val();
 
       $("#searchTitle").text(`"${query}"`);
       $("#pageCount").text(`Page ${current_page}`);
@@ -84,15 +110,23 @@
 
     function render(container, movies) {
       const temp = $("#pagination-temp").html();
-      const pages = [1, 2, 3 , 4 , 5];
-      const rendered = Mustache.render(temp, {pages});
+      const formatted = moviesCard(movies);
+      const rendered = Mustache.render(temp, {movies: formatted});
 
-      $("pagination").html(rendered);
+      $(container).html(rendered);
     }
 
-    $(document.on("click", ".pagebutton", function() {
+    function pagination() {
+      const temp = $("#pagination_temp").html();
+      const pages = [1,2,3,4,5];
+      const rendered = Mustache.render(temp, {pages});
+
+      $("#pagination").html(renderedd);
+    }
+
+    $(document).on("click", ".pagebutton", function() {
       current_page = $(this).data("page");
-      display(current_page):
+      display(current_page);
 
       $("#pageCount").text(`Page ${current_page}`);
     });
@@ -111,7 +145,7 @@
         };
 
         const rendered = Mustache.render(temp, formatted);
-        $("#movieInfo".html(rendered);
+        $("#movieInfo").html(rendered);
       });
     });
       
