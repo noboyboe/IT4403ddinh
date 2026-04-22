@@ -106,7 +106,18 @@
 
       display(current_page);
       pagination();
+
+      
+      $("#gridView").click(function() {
+      current_view = "grid";
+      display(current_page);
     });
+
+      $("#listView").click(function() {
+      current_view = "list";
+      display(current_page);
+    });
+  });
 
     function display(page_num) {
       let query = $("#userinput").val();
@@ -137,16 +148,6 @@
     $(".movie").addClass("show");
   }, 50);
 }
-    $("#gridView").click(function() {
-    current_view = "grid";
-    display(current_page);
-  });
-
-  $("#listView").click(function() {
-    current_view = "list";
-    display(current_page);
-  });
-
     function pagination() {
       const temp = $("#pagination_temp").html();
       const pages = [1,2,3,4,5];
