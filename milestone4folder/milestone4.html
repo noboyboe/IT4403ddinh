@@ -10,7 +10,7 @@
 
 <body>
 
-  <script id="movie-card-template" type="x-tmpl-mustache">
+  <script id="moviesCard_temp" type="x-tmpl-mustache">
   {{#movies}}
     <div class="movie" data-id="{{id}}">
       <img src="{{poster}}" />
@@ -29,7 +29,7 @@
   <p>Rating: {{vote_average}}</p>
 </script>
 
-<script id="pagination-temp" type="x-tmpl-mustache">
+<script id="pagination_temp" type="x-tmpl-mustache">
   {{#pages}}
     <button class="pagebutton" data-page="{{.}}">{{.}}</button>
   {{/pages}}
@@ -109,7 +109,7 @@
     }
 
     function render(container, movies) {
-      const temp = $("#pagination-temp").html();
+      const temp = $("#moviesCard_temp").html();
       const formatted = moviesCard(movies);
       const rendered = Mustache.render(temp, {movies: formatted});
 
