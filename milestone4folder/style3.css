@@ -30,7 +30,8 @@
 }
 
 
-.view-toggle {
+.options {
+  display: none;
 }
 #gridView {
   width:120px;
