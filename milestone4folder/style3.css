@@ -169,6 +169,35 @@ body {
   padding-top: 8px;
 }
 
+#results.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.grid-item {
+  width: 150px;
+  text-align: center;
+}
+
+#results.list {
+  display: block;
+}
+
+.list-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.list-item img {
+  width: 100px;
+}
+
+.list-item .movie-info {
+  text-align: left;
+}
+
 .content h2{
   text-align: center;
 }
