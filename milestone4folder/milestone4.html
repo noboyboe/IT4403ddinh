@@ -11,14 +11,16 @@
 <body>
 
   <script id="moviesCard_temp" type="x-tmpl-mustache">
-  {{#movies}}
-    <div class="movie" data-id="{{id}}">
-      <img src="{{poster}}" />
+{{#movies}}
+  <div class="movie {{viewMode}}" data-id="{{id}}">
+    <img src="{{poster}}" />
+    <div class="movie-info">
       <h3>{{title}}</h3>
       <p>Released: {{release_date}}</p>
       <p>Rating: {{vote_average}}</p>
     </div>
-  {{/movies}}
+  </div>
+{{/movies}}
 </script>
 
 <script id="detail_temp" type="x-tmpl-mustache">
@@ -41,6 +43,9 @@
     <h2>Search For Movies</h2>
     <input type="text" id="userinput" placeholder="Enter keywords...">
     <button id="searchbutton">Search</button>
+    <div class="view-toggle">
+      <button id="gridView">Grid View</button>
+      <button id="listView">List View</button>
   </div>
 <!-- All movie information can be seen in this div -->
   <div class="content">
@@ -67,6 +72,7 @@
     const image = "https://image.tmdb.org/t/p/w200";
 
     let current_page = 1;
+    let current_view = "grid";
 
 // This function provides information on the first 20 upcoming movies
 
@@ -109,16 +115,28 @@
     }
 
     function render(container, movies) {
-      const temp = $("#moviesCard_temp").html();
-      const formatted = moviesCard(movies);
-      const rendered = Mustache.render(temp, {movies: formatted});
+  const temp = $("#moviesCard_temp").html();
+  const formatted = movies.map(movie => ({
+    ...moviesCard([movie])[0],
+    viewMode: current_view === "grid" ? "grid-item" : "list-item"
+  }));
 
-      $(container).html(rendered);
+  const rendered = Mustache.render(temp, {movies: formatted});
+  $(container).html(rendered);
 
-      setTimeout(() => {
-        $(".movie").addClass("show");
-      }, 50);
-    }
+  setTimeout(() => {
+    $(".movie").addClass("show");
+  }, 50);
+}
+    $("#gridView").click(function() {
+    current_view = "grid";
+    display(current_page);
+  });
+
+  $("#listView").click(function() {
+    current_view = "list";
+    display(current_page);
+  });
 
     function pagination() {
       const temp = $("#pagination_temp").html();
