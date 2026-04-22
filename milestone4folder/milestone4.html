@@ -62,7 +62,6 @@
       </div>
     </div>
     <div id="results"></div>
-    <div id="pageCount"></div>
     <div id="movieInfo"></div>
   </div>
 
@@ -102,7 +101,6 @@
       let query = $("#userinput").val();
 
       $("#searchTitle").text(`"${query}"`);
-      $("#pageCount").text(`Page ${current_page}`);
 
       display(current_page);
       pagination();
