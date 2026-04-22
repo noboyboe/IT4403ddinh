@@ -114,6 +114,10 @@
       const rendered = Mustache.render(temp, {movies: formatted});
 
       $(container).html(rendered);
+
+      setTimeout(() => {
+        $(".movie").addClass("show");
+      }, 50);
     }
 
     function pagination() {
@@ -121,7 +125,7 @@
       const pages = [1,2,3,4,5];
       const rendered = Mustache.render(temp, {pages});
 
-      $("#pagination").html(renderedd);
+      $("#pagination").html(rendered);
     }
 
     $(document).on("click", ".pagebutton", function() {
