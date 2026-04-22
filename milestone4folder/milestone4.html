@@ -74,9 +74,9 @@
     const api_key = "0ecdfc6e4a77a70994012b68270a5ecf";
     const url = "https://api.themoviedb.org/3";
     const image = "https://image.tmdb.org/t/p/w200";
-
     let current_page = 1;
     let current_view = "grid";
+    $(".options").hide();
 
 // This function provides information on the first 20 upcoming movies
 
@@ -106,7 +106,6 @@
 
       display(current_page);
       pagination();
-      layout();
   });
 
     function display(page_num) {
