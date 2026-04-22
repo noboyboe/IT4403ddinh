@@ -230,12 +230,15 @@ body {
 
 .grid-item {
   text-align: center;
-  margin-bottom:15px;
 }
 
 #results.list {
   display: block;
   min-width: 1400px;
+}
+
+#results.grid {
+  padding-bottom: 15px;
 }
 
 .list-item {
