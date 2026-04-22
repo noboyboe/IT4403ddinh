@@ -42,6 +42,16 @@
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
+button:active {
+  transform: scale(0.95);
+}
+
+.active {
+  background-color: #444 !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
 #gridView:hover {
   background-color: #444;
   color:white;
