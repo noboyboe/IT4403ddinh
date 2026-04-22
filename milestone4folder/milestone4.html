@@ -145,7 +145,6 @@
 
   $("#gridView").click(function() {
     current_view = "grid";
-    display(current_page);
     $("#gridView").addClass("active");
     $("#listView").removeClass("active");
 
@@ -153,7 +152,6 @@
 
   $("#listView").click(function() {
     current_view = "list";
-    display(current_page);
     $("#listView").addClass("active");
     $("#gridView").removeClass("active");
   });
