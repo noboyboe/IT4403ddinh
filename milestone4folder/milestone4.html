@@ -107,17 +107,6 @@
 
       display(current_page);
       pagination();
-
-      
-      $("#gridView").click(function() {
-      current_view = "grid";
-      display(current_page);
-    });
-
-      $("#listView").click(function() {
-      current_view = "list";
-      display(current_page);
-    });
   });
 
     function display(page_num) {
@@ -144,10 +133,20 @@
           .removeClass("grid list")
           .addClass(current_view)
       }
-
+      
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
+
+  $("#gridView").click(function() {
+    current_view = "grid";
+    display(current_page);
+  });
+
+  $("#listView").click(function() {
+    current_view = "list";
+    display(current_page);
+  });
 }
     function pagination() {
       const temp = $("#pagination_temp").html();
