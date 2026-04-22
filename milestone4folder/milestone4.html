@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Milestone 3</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+  <div class="header">
+    <h1>The Movie Database</h1>
+    <h2>Search For Movies</h2>
+    <input type="text" id="userinput" placeholder="Enter keywords...">
+    <button id="searchbutton">Search</button>
+  </div>
+<!-- All movie information can be seen in this div -->
+  <div class="content">
+    <div class="up_sect">
+      <h2>Upcoming</h2>
+      <div id="upcoming"></div>
+    </div>
+    <h2>Search results for:</h2>
+    <div id="searchTitle"></div>
+    <div id="resultsCount"></div>
+    <div id="results"></div>
+    <div id="pagination"></div>
+    <div id="pageCount"></div>
+    <div id="movieInfo"></div>
+  </div>
+
+   <div class="footer">
+    <p>Milestone 3 Assignment is ran by TMDB (The Movie Database) API</p>
+  </div>
+
+  <script>
+    const api_key = "0ecdfc6e4a77a70994012b68270a5ecf";
+    const url = "https://api.themoviedb.org/3";
+    const image = "https://image.tmdb.org/t/p/w200";
+
+// This function provides information on the first 20 upcoming movies
+$(document).ready(function () {
+    $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
+        let upcomingMovies = data.results.slice(0, 20);
+        displayUpcoming(upcomingMovies);
+    });
+});
+// This function displays those said 20 movies
+function displayUpcoming(movies) {
+    $("#upcoming").empty();
+    movies.forEach(movie => {
+        let card = $(`
+            <div class="movie" data-id="${movie.id}">
+                <img src="${image + movie.poster_path}" />
+                <h3>${movie.title}</h3>
+                <p>Released: ${movie.release_date}</p>
+                <p>Rating: ${movie.vote_average}</p>
+            </div>
+        `);
+      // This appends a fading in animation for the upcoming movies
+        $("#upcoming").append(card);
+        setTimeout(() => {
+            card.addClass("show");
+        }, 50);
+    });
+}
+
+    // Upon clicking the search button, the user's input is queried into display()
+ $("#searchbutton").click(function () {
+      current_page = 1;
+      let query = $("#userinput").val();
+      $("#searchTitle").text(`"${query}"`);
+      display(current_page);
+      paginationFunct();
+     $("#pageCount").text(`Page ${current_page}`);
+    });
+
+    // the $.get function is used to gather information from the movie database
+    function display(page_num) {
+      let query = $("#userinput").val();
+      $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function (data) {
+        $("#results").empty();
+        // slicing the page limits 10 movies per page
+      let pageItems = data.results.slice(0, 10);
+
+        // After clicking search, an animation for each item is played for the user and displaying the movies along with its information.
+        pageItems.forEach(movie => {
+          let smoothLoad = $(`
+            <div class="movie" data-id="${movie.id}">
+              <img src="${image + movie.poster_path}" />
+              <h3>${movie.title}</h3>
+              <p>Released: ${movie.release_date}</p>
+              <p>Rating: ${movie.vote_average}</p>
+            </div>
+          `);
+          // This is a fading in animation for the searched movie results
+          $("#results").append(smoothLoad);
+          setTimeout(() => {
+            smoothLoad.addClass("show");
+          }, 50);
+        });
+        $("#resultsCount").text(`Found ${data.total_results} results`);
+      });
+    }
+
+    // This is the function that allows the user to click through each page
+  function paginationFunct() {
+    $("#pagination").empty();
+    for (let i = 1; i <= 5; i++) {
+        $("#pagination").append(`
+            <button class="pagebutton" data-page="${i}">${i}</button>
+        `);
+    }
+}
+    // Clicking the next page will change into a different set of movies
+$(document).on("click", ".pagebutton", function () {
+    current_page = $(this).data("page");
+    display(current_page); 
+    $("#pageCount").text(`Page ${current_page}`);
+});
+
+// Upon clicking on a movie, additional information is displayed at the bottom of the website
+$(document).on("click", ".movie", function () {
+    let movieId = $(this).data("id");
+
+$.get(`${url}/movie/${movieId}?api_key=${api_key}`, function (movie) {
+        $("#movieInfo").html(`
+            <img src="${image + movie.poster_path}" />
+            <h2>${movie.title}</h2>
+            <p>${movie.overview}</p>
+            <p>Released: ${movie.release_date}</p>
+            <p>Rating: ${movie.vote_average}</p>
+        `);
+    });
+});
+
+  </script>
+
+</body>
+</html>
