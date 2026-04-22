@@ -107,6 +107,7 @@
 
       display(current_page);
       pagination();
+      layout();
   });
 
     function display(page_num) {
@@ -137,7 +138,9 @@
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
+}
 
+function layout() {
   $("#gridView").click(function() {
     current_view = "grid";
     display(current_page);
