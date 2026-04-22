@@ -116,6 +116,11 @@
         let pageItems = data.results.slice(0, 10);
         render("#results", pageItems);
         $("#resultsCount").text(`Found ${data.total_results} results`);
+        if (data.total_results > 0) {
+          $(".options").show();
+        } else {
+          $(".options").hide();
+        }
       });
     }
 
