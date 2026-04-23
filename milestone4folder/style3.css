@@ -307,9 +307,7 @@ body {
   #userinput{
     width: auto;
   }
-  #results.grid{
-    margin:0px;
-    width: 200px;
+
   }
   .options{
     min-width:0px;
@@ -362,9 +360,12 @@ body {
     gap:3px;
     width:320px;
   }
-  #results.grid{
-   width:300px;
-   
+  #results.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px;
+    max-width: 380px; 
+    margin: auto;
   }
   .grid-item{
     width:120px;
