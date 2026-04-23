@@ -159,167 +159,6 @@ button:active {
 }
 
 .movie {
-  background-color:grey;.header {
-  background: #5E5E5E;
-  height: auto;
-  text-align: center;
-  padding: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.150);
-}
-
-.header h2 {
-  font-weight: lighter;
-
-}
-
-.options {
-  justify-content: space-between;
-  display: flex;
-  min-width: 1400px;
-}
-
-#upcoming {
-  overflow: auto;
-  gap: 20px;
-  padding: 20px;
-  scroll-behavior: smooth;
-  display: flex;
-  max-width: 1350px;
-  margin: auto;
-}
-
-#gridView {
-  width:120px;
-  height:55px;
-  background-color: whitesmoke;
-  margin: 8px;
-  /*! padding:10px; */
-  border-radius:20px; 
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s, transform 0.1s;
-  cursor: pointer;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-.active {
-  background-color: #444 !important;
-  color: white !important;
-  transform: scale(1.05);
-}
-
-#gridView:hover {
-  background-color: #444;
-  color:white;
-}
-
-
-#listView {
-  width:120px;
-  height:55px;
-  background-color: whitesmoke;
-  margin: 8px;
-  /*! padding:10px; */
-  border-radius:20px;
-  display: inline-flex;  
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s, transform 0.1s;
-  cursor: pointer;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-}
-
-#listView:hover {
-  background-color: #444;
-  color:white;
-}
-
-#searchbutton {
-  width:80px;
-  height:50px;
-  background-color: whitesmoke;
-  margin: 8px;
-  padding:10px;
-  border-radius:20px;
-  display: inline-flex;  
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s, transform 0.1s;
-  cursor: pointer;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-}
-
-#searchbutton:hover {
-  background-color: #444;
-  color:white;
-}
-
-#userinput {
-  padding:10px;
-  border-radius:20px;
-  width:350px;
-  height:25px;
-  font-size:15px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-}
-
-#results {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 30px;
-  max-width: 1400px;
-  margin: auto;
-  padding-top: 10px;
-}
-
-#pagination {
-  display: flex;
-  justify-content: center; 
-  /*! gap: 10px; */              
-  /*! padding: 20px; */
-  padding-bottom: 5px;
-}
-
-#movieInfo {
-  text-align: center;
-  background-color: grey;
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-  padding-left: 150px;
-  padding-right: 150px;
-  padding-top:20px;
-  width: 1000px;
-  border-radius: 20px;
-}
-
-#movieInfo img {
-  border-radius: 20px;
-}
-
-#pageCount {
-  padding-bottom: 15px;
-  
-}
-
-.up_sect {
-  text-align: left;
-}
-
-.resu {
-  padding-top:20px;
-}
-
-.movie img{
-  border-radius: 10px;
-}
-
-.movie {
   background-color:grey;
   padding: 20px;
   border-radius: 10px;
@@ -470,6 +309,7 @@ body {
   }
   #results.grid{
     margin:0px;
+    width: 200px;
   }
   .options{
     min-width:0px;
@@ -522,7 +362,12 @@ body {
     gap:3px;
     width:320px;
   }
-  
+  #results.grid{
+   width:300px;
+   
+  }
+  .grid-item{
+    width:120px;
+    padding:2px;
+  }
 }
-
-
