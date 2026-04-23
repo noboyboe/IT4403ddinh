@@ -159,6 +159,167 @@ button:active {
 }
 
 .movie {
+  background-color:grey;.header {
+  background: #5E5E5E;
+  height: auto;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.150);
+}
+
+.header h2 {
+  font-weight: lighter;
+
+}
+
+.options {
+  justify-content: space-between;
+  display: flex;
+  min-width: 1400px;
+}
+
+#upcoming {
+  overflow: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;
+  display: flex;
+  max-width: 1350px;
+  margin: auto;
+}
+
+#gridView {
+  width:120px;
+  height:55px;
+  background-color: whitesmoke;
+  margin: 8px;
+  /*! padding:10px; */
+  border-radius:20px; 
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.active {
+  background-color: #444 !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+#gridView:hover {
+  background-color: #444;
+  color:white;
+}
+
+
+#listView {
+  width:120px;
+  height:55px;
+  background-color: whitesmoke;
+  margin: 8px;
+  /*! padding:10px; */
+  border-radius:20px;
+  display: inline-flex;  
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#listView:hover {
+  background-color: #444;
+  color:white;
+}
+
+#searchbutton {
+  width:80px;
+  height:50px;
+  background-color: whitesmoke;
+  margin: 8px;
+  padding:10px;
+  border-radius:20px;
+  display: inline-flex;  
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  cursor: pointer;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#searchbutton:hover {
+  background-color: #444;
+  color:white;
+}
+
+#userinput {
+  padding:10px;
+  border-radius:20px;
+  width:350px;
+  height:25px;
+  font-size:15px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: auto;
+  padding-top: 10px;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center; 
+  /*! gap: 10px; */              
+  /*! padding: 20px; */
+  padding-bottom: 5px;
+}
+
+#movieInfo {
+  text-align: center;
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top:20px;
+  width: 1000px;
+  border-radius: 20px;
+}
+
+#movieInfo img {
+  border-radius: 20px;
+}
+
+#pageCount {
+  padding-bottom: 15px;
+  
+}
+
+.up_sect {
+  text-align: left;
+}
+
+.resu {
+  padding-top:20px;
+}
+
+.movie img{
+  border-radius: 10px;
+}
+
+.movie {
   background-color:grey;
   padding: 20px;
   border-radius: 10px;
@@ -266,34 +427,102 @@ body {
   font-size: 16px;
 }
 
-@media (max-width: 400px) {
-  .header,
-  .tabs,
-  .content,
-  .footer {
-    padding: 10px;
-    max-width: 100%;
+@media (max-width: 450px) {
+  .header h1{
+    font-size:20px;
   }
+  .header h2{
+    font-size:20px;
+    }
+  .content{
+    font-size:15px;
+    min-height:auto;
+    padding:0px;
+  }
+  .movie img{
+    height:150px;
+    width:100px;
+  }
+  .movie{
+    font-size:10px;
+    height:auto;
+  }
+  .movie p{
+    display:none;
+  }
+  #movieInfo h2{
+    font-size:20px;
+  }
+  #movieInfo p{
+    font-size:14px;
+  }
+  #movieInfo img{
+    height:180px;
+    width:120px;
+  }
+  #movieInfo{
+    width:auto;
+    padding:10px;
+    padding-top:10px;
+  }
+  #userinput{
+    width: auto;
+  }
+  #results.grid{
+    margin:0px;
+  }
+  .options{
+    min-width:0px;
+    display: contents;
+  }
+  #pagination{
+    
+  }
+  .pagebutton{
+    height:40px;
+    width:40px;
+  }
+  
+  #gridView{
+    height: 45px;
+    margin: 0px;
+  }
+  #listView{
+    height:45px;
+  }
+  #results.list{
+    min-width:380px;
+  }
+  #results img{
+    height:100px;
+    width:60px;
+  }
+  
+  
+  #movieInfo img{
+    height:150px;
+    width:100px;
+  }
+  
+  #movieInfo h2{
+    font-size:15px;
+  }
+  #movieInfo p{
+    font-size:12px;
+  }
+
+  .list-item {
+    gap:5px;
+    padding:3px;
+    margin:2px;
+    margin-bottom:5px;
+  }
+  
+  #upcoming{
+    gap:3px;
+    width:320px;
+  }
+  
 }
 
-@media screen and (min-width: 768px) and (max-width: 1190px) {
-  .picture {
-    flex-direction: column; 
-    align-items: center;
-  }
-
-  .picture img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
-  }
-  .reference {
-    text-align: center;
-    padding-left: 20px;
-}
-  .text {
-    max-width: 100%;
-    padding: 10px;
-  }
-}
 
