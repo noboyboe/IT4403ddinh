@@ -21,11 +21,11 @@
 <!-- These are mustache templates that display movie details.-->
 <script id="moviesCard_temp" type="x-tmpl-mustache">
 {{#movies}}
-  <div class="col-6 col-md-4 col-lg-3 mb-4">
+  <div class="col">
     <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
       <img src="{{poster}}" class="card-img-top" />
       <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
+        <h6 class="card-title">{{title}}</h6>
         <p class="card-text">Released: {{release_date}}</p>
         <p class="card-text">Rating: {{vote_average}}</p>
       </div>
@@ -78,7 +78,7 @@
         <button id="listView" class="btn btn-outline-light">List View</button>
       </div>
     </div>
-    <div id="results" class="row"></div>
+    <div id="results" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"></div>
     <div class="modal fade" id="movieModal" tabindex="-1">
       <div class="modal-dialog modal-lg">
           <div class="modal-content p-3" id="movieInfo"></div>
