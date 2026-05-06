@@ -72,6 +72,7 @@
     <div class="options">
       <div class="pageDiv">
         <div id="pagination"></div>
+        <button id="tableView" class="btn btn-outline-light">Table</button>
       </div>
       <div class="view-toggle text-center my-3">
         <button id="gridView" class="btn btn-outline-light">Grid View</button>
@@ -149,15 +150,6 @@
         let pageItems = data.results.slice(0, 10);
         render("#results", pageItems);
         $("#resultsCount").text(`Found ${data.total_results} results`);
-        let tableHTML = data.results.slice(0, 10).map(movie => `
-          <tr>
-            <td>${movie.title}</td>
-            <td>${movie.release_date}</td>
-            <td>${movie.vote_average}</td>
-          </tr>
-        `).join("");
-
-        $("#resultsTable").html(tableHTML);
         
         if (data.total_results > 0) {
           $(".options").show();
@@ -166,6 +158,18 @@
         }
       });
     }
+    function tableDisplay(page_num) {
+      let tableHTML = data.results.slice(0, 10).map(movie => `
+          <tr>
+            <td>${movie.title}</td>
+            <td>${movie.release_date}</td>
+            <td>${movie.vote_average}</td>
+          </tr>
+        `).join("");
+
+        $("#resultsTable").html(tableHTML);
+    }
+    
 //The movies are rendered to display the movies in an organized fashion.
     function render(container, movies) {
       const temp = $("#moviesCard_temp").html();
@@ -199,6 +203,10 @@
     $("#listView").addClass("active");
     $("#gridView").removeClass("active");
     display(current_page);
+});
+
+  $(document).on("click", "#tableView", function() {
+    tableDisplay(current_page);
 });
     //When the user clicks on a numbered button, it will change pages with a new set of movies.
     function pagination() {
