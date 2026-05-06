@@ -19,19 +19,19 @@
   </div>
 </nav>
 <!-- These are mustache templates that display movie details.-->
-<script id="moviesCard_temp" type="x-tmpl-mustache">
-{{#movies}}
-  <div class="col">
-    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
-      <img src="{{poster}}" class="card-img-top" />
-      <div class="card-body">
-        <h6 class="card-title">{{title}}</h6>
-        <p class="card-text">Released: {{release_date}}</p>
-        <p class="card-text">Rating: {{vote_average}}</p>
+<script id="moviesList_temp" type="x-tmpl-mustache">
+<div class="list-group">
+  {{#movies}}
+    <div class="list-group-item list-group-item-action movie d-flex align-items-center gap-3" data-id="{{id}}">
+      <img src="{{poster}}" width="60" class="rounded" />
+      <div>
+        <h6 class="mb-1">{{title}}</h6>
+        <small>Released: {{release_date}}</small><br>
+        <small>Rating: {{vote_average}}</small>
       </div>
     </div>
-  </div>
-{{/movies}}
+  {{/movies}}
+</div>
 </script>
 
 <script id="detail_temp" type="x-tmpl-mustache">
@@ -190,12 +190,27 @@
     }
     
 //The movies are rendered to display the movies in an organized fashion.
-    function render(container, movies) {
-      const temp = $("#moviesCard_temp").html();
-      const formatted = movies.map(movie => ({
-        ...moviesCard([movie])[0],
-        viewMode: current_view === "grid" ? "grid-item" : "list-item"
-    }));
+function render(container, movies) {
+  const formatted = movies.map(movie => ({
+    ...moviesCard([movie])[0],
+    viewMode: current_view
+  }));
+    
+  let template;
+    
+  if (current_view === "list") {
+    template = $("#moviesList_temp").html();
+  } else {
+    template = $("#moviesCard_temp").html();
+  }
+
+  const rendered = Mustache.render(template, { movies: formatted });
+  $(container).html(rendered);
+
+  setTimeout(() => {
+    $(".movie").addClass("show");
+  }, 50);
+}
 
   const rendered = Mustache.render(temp, {movies: formatted});
   $(container).html(rendered);
@@ -212,15 +227,17 @@
    //Functions when the user clicks on either 'Grid View' or 'List View' and the movies are organized differently 
   $(document).on("click", "#gridView", function() {
     current_view = "grid";
-    $("#gridView").addClass("active");
-    $("#listView").removeClass("active");
+    $("#results")
+      .addClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3")
+      .removeClass("list-group");
     display(current_page);
 });
 
   $(document).on("click", "#listView", function() {
     current_view = "list";
-    $("#listView").addClass("active");
-    $("#gridView").removeClass("active");
+    $("#results")
+      .removeClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3")
+      .addClass("list-group");
     display(current_page);
 });
 
