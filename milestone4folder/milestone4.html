@@ -88,23 +88,24 @@
         </div>
     </div>
     <div class="container my-4">
-      <div class="modal fade" id="tableModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content p-3">
-            <h4 class="mb-3">Search Results Table</h4>
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Release Date</th>
-                  <th>Rating</th>
-                </tr>
-              </thead>
-              <tbody id="resultsTable"></tbody>
-            </table>
+        <div class="modal fade" id="tableModal" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content p-3">
+              <h4 class="mb-3">Search Results Table</h4>
+                <table class="table table-dark table-striped">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Release Date</th>
+                      <th>Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody id="resultsTable"></tbody>
+                </table>
+              </div>
           </div>
+      </div>
     </div>
-  </div>
    <div class="footer">
     <p>Milestone 4 Assignment is ran by TMDB (The Movie Database) API</p>
   </div>
@@ -135,7 +136,6 @@
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
       let upcomingMovies = moviesCard(data.results.slice(0, 20));
       render("#upcoming", upcomingMovies);
-});
     });
 });
 // Provides a page counter so the code knows which page it needs to display
@@ -192,19 +192,11 @@
     
 //The movies are rendered to display the movies in an organized fashion.
 function render(container, movies) {
+  const formatted = moviesCard(movies);
 
-  const formatted = movies.map(movie => ({
-    ...moviesCard([movie])[0],
-    viewMode: current_view
-  }));
-
-  let template;
-
-  if (current_view === "list") {
-    template = $("#moviesList_temp").html();
-  } else {
-    template = $("#moviesCard_temp").html();
-  }
+  let template = current_view === "list"
+    ? $("#moviesList_temp").html()
+    : $("#moviesCard_temp").html();
 
   const rendered = Mustache.render(template, { movies: formatted });
   $(container).html(rendered);
