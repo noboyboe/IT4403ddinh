@@ -1,11 +1,11 @@
 .container {
-  max-width: 1400px !important;
+  min-width:1900px !important;
 }
 
 .options {
   justify-content: space-between;
   display: flex !important;
-  min-width: 1400px;
+  min-width: 1000px;
 }
 
 #upcoming {
@@ -62,13 +62,18 @@ button:active {
   padding-top: 10px;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  display: flex;;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
   background-color: #404040;
   color: white;
   font-size: 18px;
-  flex-direction: column;
-  margin: 0px
 }
 
 #movieInfo {
@@ -135,7 +140,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  padding: 30px;
+  /*! padding: 30px; */
   padding-top: 8px;
 }
 
