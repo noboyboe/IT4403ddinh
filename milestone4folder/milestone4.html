@@ -19,19 +19,19 @@
   </div>
 </nav>
 <!-- These are mustache templates that display movie details.-->
-<script id="moviesList_temp" type="x-tmpl-mustache">
-<div class="list-group">
-  {{#movies}}
-    <div class="list-group-item list-group-item-action movie d-flex align-items-center gap-3" data-id="{{id}}">
-      <img src="{{poster}}" width="60" class="rounded" />
-      <div>
-        <h6 class="mb-1">{{title}}</h6>
-        <small>Released: {{release_date}}</small><br>
-        <small>Rating: {{vote_average}}</small>
+<script id="moviesCard_temp" type="x-tmpl-mustache">
+{{#movies}}
+  <div class="col">
+    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
+      <img src="{{poster}}" class="card-img-top" />
+      <div class="card-body">
+        <h6 class="card-title">{{title}}</h6>
+        <p class="card-text">Released: {{release_date}}</p>
+        <p class="card-text">Rating: {{vote_average}}</p>
       </div>
     </div>
-  {{/movies}}
-</div>
+  </div>
+{{/movies}}
 </script>
 
 <script id="detail_temp" type="x-tmpl-mustache">
@@ -59,7 +59,7 @@
     </button>
   {{/pages}}
 </script>
-  
+
 <!-- All movie information can be seen in this div -->
   <div class="content">
     <div class="up_sect">
@@ -88,24 +88,23 @@
         </div>
     </div>
     <div class="container my-4">
-        <div class="modal fade" id="tableModal" tabindex="-1">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content p-3">
-              <h4 class="mb-3">Search Results Table</h4>
-                <table class="table table-dark table-striped">
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Release Date</th>
-                      <th>Rating</th>
-                    </tr>
-                  </thead>
-                  <tbody id="resultsTable"></tbody>
-                </table>
-              </div>
+      <div class="modal fade" id="tableModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content p-3">
+            <h4 class="mb-3">Search Results Table</h4>
+            <table class="table table-dark table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Release Date</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTable"></tbody>
+            </table>
           </div>
-      </div>
     </div>
+  </div>
    <div class="footer">
     <p>Milestone 4 Assignment is ran by TMDB (The Movie Database) API</p>
   </div>
@@ -134,8 +133,8 @@
 // Movies are sliced into 10 movies and are split into 2 different pages
     $(document).ready(function () {
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
-      let upcomingMovies = moviesCard(data.results.slice(0, 20));
-      render("#upcoming", upcomingMovies);
+        let upcomingMovies = data.results.slice(0, 20);
+        render("#upcoming", upcomingMovies);
     });
 });
 // Provides a page counter so the code knows which page it needs to display
@@ -159,7 +158,7 @@
         let pageItems = data.results.slice(0, 10);
         render("#results", pageItems);
         $("#resultsCount").text(`Found ${data.total_results} results`);
-        
+
         if (data.total_results > 0) {
           $(".options").show();
           $("#tableView").show();
@@ -175,9 +174,9 @@
     }
     function tableDisplay(page_num) {
       let query = $("#userinput").val();
-    
+
       $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function(data) {
-    
+
         let tableHTML = data.results.slice(0, 10).map(movie => `
           <tr>
             <td>${movie.title}</td>
@@ -185,22 +184,27 @@
             <td>${movie.vote_average}</td>
           </tr>
         `).join("");
-    
+
         $("#resultsTable").html(tableHTML);
       });
     }
-    
+
 //The movies are rendered to display the movies in an organized fashion.
-function render(container, movies) {
-  const formatted = moviesCard(movies);
+    function render(container, movies) {
+      const temp = $("#moviesCard_temp").html();
+      const formatted = movies.map(movie => ({
+        ...moviesCard([movie])[0],
+        viewMode: current_view === "grid" ? "grid-item" : "list-item"
+    }));
 
-  let template = current_view === "list"
-    ? $("#moviesList_temp").html()
-    : $("#moviesCard_temp").html();
-
-  const rendered = Mustache.render(template, { movies: formatted });
+  const rendered = Mustache.render(temp, {movies: formatted});
   $(container).html(rendered);
-
+      if (container === "#results") {
+        $(container)
+          .removeClass("grid list")
+          .addClass(current_view)
+      }
+ //A slow animation that fades in and out as the user searches for new movies     
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
@@ -208,17 +212,15 @@ function render(container, movies) {
    //Functions when the user clicks on either 'Grid View' or 'List View' and the movies are organized differently 
   $(document).on("click", "#gridView", function() {
     current_view = "grid";
-    $("#results")
-      .addClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3")
-      .removeClass("list-group");
+    $("#gridView").addClass("active");
+    $("#listView").removeClass("active");
     display(current_page);
 });
 
   $(document).on("click", "#listView", function() {
     current_view = "list";
-    $("#results")
-      .removeClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3")
-      .addClass("list-group");
+    $("#listView").addClass("active");
+    $("#gridView").removeClass("active");
     display(current_page);
 });
 
@@ -265,7 +267,7 @@ function render(container, movies) {
         modal.show();
       });
     });
-      
+
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
