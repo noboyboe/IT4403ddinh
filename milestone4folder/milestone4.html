@@ -21,13 +21,13 @@
 <!-- These are mustache templates that display movie details.-->
 <script id="moviesCard_temp" type="x-tmpl-mustache">
 {{#movies}}
-  <div class="col movie-wrapper {{viewMode}}" data-id="{{id}}">
-    <div class="movie {{viewMode}}" data-id="{{id}}">
-      <img src="{{poster}}" />
-      <div class="movie-info">
-        <h3>{{title}}</h3>
-        <p>Released: {{release_date}}</p>
-        <p>Rating: {{vote_average}}</p>
+  <div class="col">
+    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
+      <img src="{{poster}}" class="card-img-top" />
+      <div class="card-body">
+        <h6 class="card-title">{{title}}</h6>
+        <p class="card-text">Released: {{release_date}}</p>
+        <p class="card-text">Rating: {{vote_average}}</p>
       </div>
     </div>
   </div>
