@@ -37,7 +37,9 @@
 
 <script id="pagination_temp" type="x-tmpl-mustache">
   {{#pages}}
-    <button class="pagebutton" data-page="{{.}}">{{.}}</button>
+    <button class="btn btn-outline-primary me-1 pagebutton" data-page="{{.}}">
+      {{.}}
+    </button>
   {{/pages}}
 </script>
   
@@ -71,13 +73,17 @@
       <div class="pageDiv">
         <div id="pagination"></div>
       </div>
-      <div class="view-toggle">
-        <button id="gridView">Grid View</button>
-        <button id="listView">List View</button>
+      <div class="view-toggle text-center my-3">
+        <button id="gridView" class="btn btn-secondary">Grid View</button>
+        <button id="listView" class="btn btn-secondary">List View</button>
       </div>
     </div>
-    <div id="results"></div>
-    <div id="movieInfo"></div>
+    <div id="results" class="row"></div>
+    <div class="modal fade" id="movieModal" tabindex="-1">
+      <div class="modal-dialog">
+          <div class="modal-content" id="movieInfo"></div>
+        </div>
+    </div>
   </div>
    <div class="footer">
     <p>Milestone 4 Assignment is ran by TMDB (The Movie Database) API</p>
@@ -204,6 +210,9 @@
 
         const rendered = Mustache.render(temp, formatted);
         $("#movieInfo").html(rendered);
+
+        const modal = new bootstrap.Modal(document.getElementById('movieModal'));
+        modal.show();
       });
     });
       
