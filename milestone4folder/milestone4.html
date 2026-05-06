@@ -159,15 +159,24 @@
       });
     }
     function tableDisplay(page_num) {
-      let tableHTML = data.results.slice(0, 10).map(movie => `
+      let query = $("#userinput").val();
+    
+      $.get(`${url}/search/movie?api_key=${api_key}&query=${query}&page=${page_num}`, function(data) {
+    
+        let tableHTML = data.results.slice(0, 10).map(movie => `
           <tr>
             <td>${movie.title}</td>
             <td>${movie.release_date}</td>
             <td>${movie.vote_average}</td>
           </tr>
         `).join("");
-
+    
         $("#resultsTable").html(tableHTML);
+    
+        $("#results").hide();
+        $("#movieModal").modal("hide");
+        $(".options").show();
+      });
     }
     
 //The movies are rendered to display the movies in an organized fashion.
