@@ -116,6 +116,7 @@
     let current_page = 1;
     let current_view = "grid";
     $(".options").hide();
+    $(".tableView").hide();
 
 // This function provides information on the first 20 upcoming movies
 
@@ -159,8 +160,10 @@
         
         if (data.total_results > 0) {
           $(".options").show();
+          $(".tableView").show();
         } else {
           $(".options").hide();
+          $(".tableView").hide();
         }
       });
     }
