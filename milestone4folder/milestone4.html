@@ -88,17 +88,20 @@
     <div class="container my-4">
       <h3>Table</h3>
       <div class="modal fade" id="tableModal" tabindex="-1">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Release Date</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
-          <tbody id="resultsTable"></tbody>
-        </table>
-      </div>
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content p-3">
+            <h4 class="mb-3">Search Results Table</h4>
+            <table class="table table-dark table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Release Date</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTable"></tbody>
+            </table>
+          </div>
     </div>
   </div>
    <div class="footer">
@@ -215,7 +218,7 @@
   $(document).on("click", "#tableView", function() {
     tableDisplay(current_page);
     const modal = new bootstrap.Modal(document.getElementById('tableModal'));
-        modal.show();
+    modal.show();
 });
     //When the user clicks on a numbered button, it will change pages with a new set of movies.
     function pagination() {
