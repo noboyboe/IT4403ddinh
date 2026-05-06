@@ -117,7 +117,8 @@
     let current_view = "grid";
     $(".options").hide();
     $("#tableView").hide();
-
+    $("#gridView").hide();
+    $("#listView").hide();
 // This function provides information on the first 20 upcoming movies
 
     function moviesCard(movies){
@@ -161,9 +162,13 @@
         if (data.total_results > 0) {
           $(".options").show();
           $("#tableView").show();
+          $("#gridView").show();
+          $("#listView").show();
         } else {
           $(".options").hide();
           $("#tableView").hide();
+          $("#gridView").hide();
+          $("#listView").hide();
         }
       });
     }
