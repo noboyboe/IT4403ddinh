@@ -133,8 +133,9 @@
 // Movies are sliced into 10 movies and are split into 2 different pages
     $(document).ready(function () {
     $.get(`${url}/movie/upcoming?api_key=${api_key}`, function (data) {
-        let upcomingMovies = data.results.slice(0, 20);
-        render("#upcoming", upcomingMovies);
+      let upcomingMovies = moviesCard(data.results.slice(0, 20));
+      render("#upcoming", upcomingMovies);
+});
     });
 });
 // Provides a page counter so the code knows which page it needs to display
@@ -191,13 +192,14 @@
     
 //The movies are rendered to display the movies in an organized fashion.
 function render(container, movies) {
+
   const formatted = movies.map(movie => ({
     ...moviesCard([movie])[0],
     viewMode: current_view
   }));
-    
+
   let template;
-    
+
   if (current_view === "list") {
     template = $("#moviesList_temp").html();
   } else {
@@ -207,19 +209,6 @@ function render(container, movies) {
   const rendered = Mustache.render(template, { movies: formatted });
   $(container).html(rendered);
 
-  setTimeout(() => {
-    $(".movie").addClass("show");
-  }, 50);
-}
-
-  const rendered = Mustache.render(temp, {movies: formatted});
-  $(container).html(rendered);
-      if (container === "#results") {
-        $(container)
-          .removeClass("grid list")
-          .addClass(current_view)
-      }
- //A slow animation that fades in and out as the user searches for new movies     
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
