@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-dark bg-dark px-3">
   <span class="navbar-brand mb-0 h1">The Movie Database</span>
-  <div class="input-group w-100 w-md-75 w-lg-50 mx-auto">
+  <div class="input-group w-50 mx-auto">
     <input type="text" id="userinput" class="form-control" placeholder="Enter keywords...">
     <button id="searchbutton" class="btn btn-primary">Search</button>
   </div>
@@ -22,7 +22,7 @@
 <script id="moviesCard_temp" type="x-tmpl-mustache">
 {{#movies}}
   <div class="col">
-    <div class="card movie {{viewMode}} w-100" data-id="{{id}}">
+    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
       <img src="{{poster}}" class="card-img-top" />
       <div class="card-body">
         <h6 class="card-title">{{title}}</h6>
@@ -64,14 +64,14 @@
   <div class="content">
     <div class="up_sect">
       <h2>Upcoming</h2>
-      <div id="upcoming" class="d-flex overflow-auto gap-3 px-3">
+      <div id="upcoming"></div>
     </div>
     <h2>Search results for:</h2>
     <div id="searchTitle"></div>
     <div id="resultsCount"></div>
     <div class="options">
       <div class="pageDiv">
-        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3" id="topControls">
+        <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap" id="topControls">
           <div id="pagination"></div>
           <button id="tableView" class="btn btn-outline-light">Table</button>
         </div>
@@ -81,9 +81,9 @@
         <button id="listView" class="btn btn-outline-light">List View</button>
       </div>
     </div>
-    <div id="results" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+    <div id="results" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"></div>
     <div class="modal fade" id="movieModal" tabindex="-1">
-      <div class="modal-dialog modal-fullscreen-sm-down modal-lg">
+      <div class="modal-dialog modal-lg">
           <div class="modal-content p-3" id="movieInfo"></div>
         </div>
     </div>
