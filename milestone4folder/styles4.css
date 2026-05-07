@@ -1,5 +1,5 @@
 .container {
-  min-width:1900px !important;
+  /*! min-width:1900px; */
 }
 
 .options {
@@ -94,7 +94,7 @@ body {
 }
 
 .movie {
-  width: auto !important;
+  width: auto;
   background-color:grey;
   padding: 20px;
   border-radius: 10px;
@@ -184,6 +184,152 @@ body {
   padding: 15px;
   text-align: center;
   font-size: 16px;
+  border-radius: 10px;
+}
+
+@media (max-width: 450px) {
+  .navbar {
+    min-width: 400px;
+    flex-flow:column 
+  }
+  
+  .container {
+    width: auto;
+  }
+  
+  .footer {
+    width:350px;
+    border-radius:10px;
+  }
+
+  .content{
+    font-size:15px;
+    min-height:auto;
+    padding:0px;
+  }
+  .movie img{
+    height:150px;
+    width:100px;
+  }
+  .movie{
+    font-size:10px;
+    height:auto;
+  }
+  .movie p{
+    display:none;
+  }
+  
+  #movieInfo h2{
+    font-size:20px;
+  }
+  #movieInfo p{
+    font-size:14px;
+  }
+  #movieInfo img{
+    height:180px;
+    width:120px;
+  }
+  #movieInfo{
+    width:auto;
+    padding:10px;
+    padding-top:10px;
+  }
+  #userinput{
+    width: auto;
+  }
+
+  .options{
+    min-width:0px;
+    display: contents;
+  }
+  #pagination{
+    
+  }
+  .pagebutton{
+    height:30px;
+    width:30px;
+    font-size: 12px;
+    padding:0px;
+  }
+  
+  #tableView {
+    height:30px;
+    width:40px;
+    font-size: 12px;
+    padding:0px;
+  }
+  
+  #gridView{
+    height:38px;
+    width:35px;
+    font-size: 12px;
+    margin-left:5px;
+    padding:0px;
+  }
+  #listView{
+    height:38px;
+    width:35px;
+    font-size: 12px;
+    padding:0px;
+  }
+  #results.list{
+    min-width:380px;
+  }
+  #results img{
+    height:100px;
+    width:60px;
+  }
+  
+  .options {
+    align-items:inherit;
+    margin:10px;
+    
+    flex-flow: column;
+  }
+  
+  #movieInfo img{
+    height:150px;
+    width:100px;
+  }
+  
+  #movieInfo h2{
+    font-size:15px;
+  }
+  #movieInfo p{
+    font-size:12px;
+  }
+
+  .list-item {
+    gap:5px;
+    padding:3px;
+    margin:2px;
+    margin-bottom:5px;
+  }
+  
+  #upcoming{
+    gap:3px;
+    width:340px;
+  }
+  #results.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    /*! gap: 30px; */
+    max-width: 380px; 
+    margin: auto;
+  }
+  .grid-item{
+    width:150px;
+    padding:2px;
+    align-items: center;
+  }
+  
+  #searchbutton {
+    min-width:20px;
+  }
+  
+  #userinput {
+    width:20px;
+  }
 }
 
 
