@@ -19,19 +19,19 @@
   </div>
 </nav>
 <!-- These are mustache templates that display movie details.-->
-<script id="moviesCard_temp" type="x-tmpl-mustache">
-{{#movies}}
-  <div class="col">
-    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
-      <img src="{{poster}}" class="card-img-top" />
-      <div class="card-body">
-        <h6 class="card-title">{{title}}</h6>
-        <p class="card-text">Released: {{release_date}}</p>
-        <p class="card-text">Rating: {{vote_average}}</p>
+<script id="moviesList_temp" type="x-tmpl-mustache">
+<div class="list-container">
+  {{#movies}}
+    <div class="movie list-item" data-id="{{id}}">
+      <img src="{{poster}}" width="80" class="rounded" />
+      <div>
+        <h6 class="mb-1">{{title}}</h6>
+        <small>Released: {{release_date}}</small><br>
+        <small>Rating: {{vote_average}}</small>
       </div>
     </div>
-  </div>
-{{/movies}}
+  {{/movies}}
+</div>
 </script>
 
 <script id="detail_temp" type="x-tmpl-mustache">
