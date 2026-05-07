@@ -214,7 +214,13 @@
   setTimeout(() => {
     $(".movie").addClass("show");
   }, 50);
-}
+
+      if (current_view === "list") {
+        $(container).removeClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3");
+      } else {
+        $(container).addClass("row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3");
+    }
+  }
    //Functions when the user clicks on either 'Grid View' or 'List View' and the movies are organized differently 
   $(document).on("click", "#gridView", function() {
     current_view = "grid";
