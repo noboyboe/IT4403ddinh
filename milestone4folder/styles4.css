@@ -150,17 +150,15 @@ body {
 
 #results.list {
   display: block;
-  min-width: 1400px;
+  width:100%;
 }
-
 #results.grid {
   padding-bottom: 15px;
 }
 
 .list-item {
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .list-item img {
@@ -170,6 +168,12 @@ body {
 .list-item .movie-info {
   text-align: left;
 }
+
+.movie.list-item {
+  display:-webkit-box;
+}
+
+.movie.
 
 .content h2{
   text-align: center;
@@ -181,3 +185,6 @@ body {
   text-align: center;
   font-size: 16px;
 }
+
+
+
