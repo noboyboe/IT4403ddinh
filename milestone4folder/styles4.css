@@ -5,7 +5,7 @@
 .options {
   justify-content: space-between;
   display: flex !important;
-  min-width: 1000px;
+  min-width: 700px;
 }
 
 #upcoming {
@@ -331,6 +331,16 @@ body {
     width:20px;
   }
 }
+
+@media (max-width: 850px) {
+  #upcoming {
+    width:700px;
+  }
+  .container {
+    width:700px;
+  }
+}
+
 
 
 
