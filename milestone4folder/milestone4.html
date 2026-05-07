@@ -20,10 +20,10 @@
 </nav>
 <!-- These are mustache templates that display movie details.-->
 <script id="moviesList_temp" type="x-tmpl-mustache">
-<div class="list-container">
+<div class="list-group">
   {{#movies}}
-    <div class="movie list-item" data-id="{{id}}">
-      <img src="{{poster}}" width="80" class="rounded" />
+    <div class="list-group-item list-group-item-action movie d-flex align-items-center gap-3" data-id="{{id}}">
+      <img src="{{poster}}" width="60" class="rounded" />
       <div>
         <h6 class="mb-1">{{title}}</h6>
         <small>Released: {{release_date}}</small><br>
