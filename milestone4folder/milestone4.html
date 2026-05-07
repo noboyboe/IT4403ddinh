@@ -19,19 +19,19 @@
   </div>
 </nav>
 <!-- These are mustache templates that display movie details.-->
-<script id="moviesList_temp" type="x-tmpl-mustache">
-<div class="list-container">
-  {{#movies}}
-    <div class="movie list-item" data-id="{{id}}">
-      <img src="{{poster}}" width="80" class="rounded" />
-      <div>
-        <h6 class="mb-1">{{title}}</h6>
-        <small>Released: {{release_date}}</small><br>
-        <small>Rating: {{vote_average}}</small>
+<script id="moviesCard_temp" type="x-tmpl-mustache">
+{{#movies}}
+  <div class="col">
+    <div class="card h-100 movie {{viewMode}}" data-id="{{id}}">
+      <img src="{{poster}}" class="card-img-top" />
+      <div class="card-body">
+        <h6 class="card-title">{{title}}</h6>
+        <p class="card-text">Released: {{release_date}}</p>
+        <p class="card-text">Rating: {{vote_average}}</p>
       </div>
     </div>
-  {{/movies}}
-</div>
+  </div>
+{{/movies}}
 </script>
 
 <script id="detail_temp" type="x-tmpl-mustache">
@@ -102,7 +102,9 @@
               </thead>
               <tbody id="resultsTable"></tbody>
             </table>
+
           </div>
+
     </div>
   </div>
    <div class="footer">
@@ -189,6 +191,10 @@
       });
     }
 
+
+
+
+
 //The movies are rendered to display the movies in an organized fashion.
     function render(container, movies) {
       const temp = $("#moviesCard_temp").html();
@@ -214,6 +220,7 @@
     current_view = "grid";
     $("#gridView").addClass("active");
     $("#listView").removeClass("active");
+
     display(current_page);
 });
 
@@ -221,6 +228,7 @@
     current_view = "list";
     $("#listView").addClass("active");
     $("#gridView").removeClass("active");
+
     display(current_page);
 });
 
